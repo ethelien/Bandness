@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/banda_menuprincipal.css">
+<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
+<script src="../js/jquery-1.5.2.min.js"></script>
+<script src="../js/jquery.jsonp-2.2.1.js"></script>
+<script>
+    var $resultados;
+    var $valor;
+
+    function obtenerDatos() {
+        valor=document.getElementById("dato").value;
+        
+        if (document.getElementById("Estilo").checked){
+       	 var tipo=document.getElementById("Estilo").value;
+        }
+        else if (document.getElementById("Ciudad").checked){
+       	 var tipo=document.getElementById("Ciudad").value;
+        }
+        else {
+       	 var tipo=document.getElementById("Cercania").value;
+        }
+        
+		
+		alert(valor);
+		
+        resultados = $('#resulta');
+        
+        $.ajax({
+            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){
+                    var landmark = '<h1>'+item.bio+'</h1>';
+                    alert(landmark);
+                    resultados.append(landmark);
+                });
+                mostrardatos();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
+    
+    function mostrardatos() {
+        $('#resulta').html($resultados);
+        $.mobile.pageLoading(true);
+    }
+    
+    function tablon(){
+        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+	}
+	
+	function configuracion(){
+        window.open("file:///android_asset/www/html/banda_configuracion.html");
+	}
+	
+	function evento(){
+        window.open("file:///android_asset/www/html/banda_evento.html");
+	}
+	
+</script>
+
+</head>
+<body onload="$.mobile.pageLoading();">
+
+<div id="wrapper">
+<FORM id="form" METHOD=GET>
+
+	 <h1>EVENTOS</h1>
+	 
+	 <div id="base">
+        
+	        <BUTTON id="Nuevo" type="button" onclick="evento()" style="display: inline; background-color:#499ef8; border-color:#000000;">
+				<p><a title="Nuevo">Nuevo</a></p>
+		    </BUTTON>
+						    
+			<BUTTON id="Editar" type="button" onclick="comprobar()" style="display: inline; background-color:#c3f079; border-color:#000000;">
+				<p><a title="Editar">Editar</a></p>
+				</BUTTON>
+			
+			<BUTTON id="Borrar" type="button" onclick="comprobar()" style="display: inline; background-color:#f66260; border-color:#000000;">
+				<p><a title="Borrar">Borrar</a></p>
+			</BUTTON>
+	        
+		 	<div id="resul">
+		 		<span id="resulta" rows="5" type="text" name="banda" onclick="continuar()"></span>
+		 	</div> 
+	 	 
+        <div id="nav-wrapper">
+            <ul id="nav">
+                <li><a href="" style="background-color:#499ef8; border-color:#000000;">Tablón</a></li>
+                <li><a href="" style="background-color:#333438; border-color:#000000;">Calendar</a></li>
+                <li><a href="" style="background-color:#333438; border-color:#000000;">Diario</a></li>
+                <li><a onclick="configuracion()" href="" style="background-color:#333438; border-color:#000000;">Config</a></li>
+            </ul>
+        </div>
+	 
+	 </div> 
+	 
+</FORM> 
+    
+</div>
+
+</body>
+
+</html>

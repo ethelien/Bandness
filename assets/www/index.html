@@ -1,0 +1,211 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/inicio.css">
+<script type='text/javascript' src='js/phonegap-1.2.0.js'></script>
+<script src="js/jquery-1.5.2.min.js"></script>
+<script src="js/jquery.jsonp-2.2.1.js"></script>
+<script>
+    var $resultados;
+    var $valor;
+
+	
+	function mostrardiv() {
+
+		div = document.getElementById('resul');
+		div2 = document.getElementById('formularioEstilo');
+		div.style.display = "none";
+		div2.style.display = "inline-block";
+
+	}
+
+		function cerrar() {
+
+		div2 = document.getElementById('resul');
+		div = document.getElementById('formularioEstilo');
+		div2.style.display = "inline-block";
+		div.style.display="none";
+
+	}
+		
+    function obtenerDatos() {
+        valor=document.getElementById("dato").value;
+        
+        if (document.getElementById("Estilo").checked){
+       	 var tipo=document.getElementById("Estilo").value;
+        }
+        else if (document.getElementById("Ciudad").checked){
+       	 var tipo=document.getElementById("Ciudad").value;
+        }
+        else {
+       	 var tipo=document.getElementById("Cercania").value;
+        }
+        
+		
+		alert(valor);
+		
+        resultados = $('#resulta');
+        
+        $.ajax({
+            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){
+                    var landmark = '<h1>'+item.bio+'</h1>';
+                    alert(landmark);
+                    resultados.append(landmark);
+                });
+                mostrardatos();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
+    
+    function mostrardatos() {
+        $('#resulta').html($resultados);
+        $.mobile.pageLoading(true);
+    }
+    
+    function continuar(){
+        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+	}
+	
+	function zonaprivada(){
+        window.open("file:///android_asset/www/html/login.html");
+	}
+	
+	function transicion(curva,ms,callback){
+	    this.ant=0.01;
+	    this.done_=false;
+	    var _this=this;
+	    this.start=new Date().getTime();
+	    this.init=function(){
+	        setTimeout(function(){
+	                if(!_this.next()){
+	                    callback(1);
+	                    _this.done_=true;
+	                    window.globalIntervalo=0;
+	                    return;
+	                }
+	                callback(_this.next());
+	                _this.init();
+	            },13);
+	    }
+	    this.next=function(){
+	        var now=new Date().getTime();
+	        if((now-this.start)>ms)
+	            return false;
+	        return this.ant=curva((now-this.start+.001)/ms,this.ant);
+	    }
+	}
+	function mover(o){
+	    var inicio=0,fin=94;
+	    var t=new transicion(linear,1000,function(p){
+	        o.style.left=inicio+((fin-inicio)*p)+'%';
+	    });
+	    t.init();
+	    t=null;
+	}
+	function linear(p,a){
+	    return p;
+	} 
+
+	
+	
+	
+</script>
+
+</head>
+<body onload="$.mobile.pageLoading();">
+
+
+	    
+<div id="wrapper">
+<FORM id="form" METHOD=GET>
+
+	<h1>Buscador de eventos</h1>
+
+	 <div id="base">
+	 
+ 		<TABLE table align="center" id="Busqueda">
+			<TR>
+  				<TD align="center"><INPUT TYPE="button" id="Estilos" style="width:50px; height:50px;" onclick="mostrardiv()"> </TD>
+  				<TD align="center"><INPUT TYPE="button" id="Ciudades" style="width:50px; height:50px;" onclick="cerrar()"> </TD>
+  				<TD align="center"><INPUT TYPE="button" id="Cercania" style="width:50px; height:50px;"> </TD>
+			</TR> 
+			<TR>
+ 				<TD align="center"><H1 style="display: inline; ">Estilo</H1><TD align="center"><H1 style="display: inline;">Ciudades</H1></TD><TD align="center"><H1 style="display: inline;">Cercania</H1></TD>
+			</TR>
+		</TABLE>
+
+	 	<div id="resul">
+	        	<!--  <span id="resulta" rows="5" type="text" name="banda" style="width:98%; background-color:transparent; border: none; resize: none; color:black"  onclick="continuar()"></span> -->
+	 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
+	 			
+	 			<TABLE table align="center" id="tabla">
+	 				<TR>
+	 					<TD colspan="3"> <H1 style="display: inline;">Próximos conciertos</H1></TD>
+					<TR>
+	      				<TD align="center"><H1 style="display: inline;">1:</H1><TD align="center"><H1 style="display: inline;">2:</H1></TD> <TD align="center"> <H1 style="display: inline;">3:</H1></TD>
+					</TR> 
+					<TR>
+	     				<TD align="center"><H1 style="display: inline;">1:</H1><TD align="center"><H1 style="display: inline;">2:</H1></TD> <TD align="center"> <H1 style="display: inline;">3:</H1></TD>
+					</TR>
+				</TABLE>				
+	 	</div> 
+	 	
+	 	<div id="formularioEstilo" style="display:none;">
+	        	<!--  <span id="resulta" rows="5" type="text" name="banda" style="width:98%; background-color:transparent; border: none; resize: none; color:black"  onclick="continuar()"></span> -->
+	 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
+	 			
+	 			<TABLE table align="center" id="tabla">
+	 				<TR>
+	 					<TD colspan="3"> <H1 style="display: inline;">TRANSICION OK</H1></TD>
+					<TR>
+	      				<TD align="center"><H1 style="display: inline;">1:</H1><TD align="center"><H1 style="display: inline;">2:</H1></TD> <TD align="center"> <H1 style="display: inline;">3:</H1></TD>
+					</TR> 
+					<TR>
+	     				<TD align="center"><H1 style="display: inline;">1:</H1><TD align="center"><H1 style="display: inline;">2:</H1></TD> <TD align="center"> <H1 style="display: inline;">3:</H1></TD>
+					</TR>
+				</TABLE>				
+	 	</div> 
+	 	
+	 	<div id="zona">
+	        <INPUT TYPE="button" value="Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
+	        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="zonaprivada()">
+	    </div>
+	 	
+	    
+	 
+	 </div> 
+
+	 
+
+</FORM> 
+    
+    
+   <!-- <div data-role="content" class="content" id="contenido">
+    <strong>RESULTADOS: </strong> 
+    <br /><br />
+    <span id="resultados"></span>
+    <br /><br />
+</div>  -->
+
+</div>
+
+</body>
+ <!--<body onload="obtenerDatos()">
+    <div id="resultados"></div>
+</body>-->
+</html>

@@ -1,0 +1,115 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="../css/publico_banda.css">
+		<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
+		<script src="../js/jquery-1.5.2.min.js"></script>
+		<script src="../js/jquery.jsonp-2.2.1.js"></script>
+	
+		<script>
+		var $resultados;
+		
+		function leerGET(){
+ 		    var cadGET = location.search.substr(1,location.search.length);
+  			var arrGET = cadGET.split("&");
+  			var asocGET = new Array();
+  			var variable = "";
+  			var valor = "";
+  			for(i=0;i<arrGET.length;i++){
+  				 var aux = arrGET[i].split("=");
+   				 variable = aux[0];
+   				 valor = aux[1];
+   		 		asocGET[variable] = valor;
+  			}
+ 		 return asocGET;
+		} 
+		
+		
+		function obtenerDatos() {
+			
+			var paresVarValor = leerGET();
+			var valor = paresVarValor['Banda'];
+			
+		    resultados = $('#info');
+		    
+		    $.ajax({
+		        url: 'http://192.168.1.102/banda_informacion.php?banda='+valor,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                var landmark = '<h1>'+item.bio+'</h1>';
+			                alert(landmark);
+			                resultados.append(landmark);
+			            });
+			            mostrardatos();
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+			
+			function mostrardatos() {
+			    $('#info').html($resultados);
+			    $.mobile.pageLoading(true);
+			}
+
+		</script>
+		
+		
+	</head>
+
+	<body> <!--onload="obtenerDatos()"-->
+		<div id="wrapper">	
+			<FORM id="form" METHOD=GET>
+				 
+				 <div id="base">
+				 
+				  		<TABLE table align="center" id="Busqueda">
+							<TR>
+	  							<TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD>
+							</TR> 
+						</TABLE>
+					<div id="resul">
+		        	<!--  <span id="resulta" rows="5" type="text" name="banda" style="width:98%; background-color:transparent; border: none; resize: none; color:black"  onclick="continuar()"></span> -->
+		 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
+		 			
+		 				<div id="datos">
+			 				<h2 align="left">Ciudad:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->
+			 				<h2 align="left">Componentes:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
+			 				<h2 align="left">Estilo:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
+			 				<h2 align="left">Sello:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
+			 				
+			 			</div>	
+			 			<HR>
+			 			
+			 			<div id="eventos">
+			 				<h1 align="center">Próximos eventos</h1> <!--  <span id="resulta" type="text" name="ciudad"></span> --> 				
+			 				<TD align="center"><INPUT TYPE="button" id="Banda" style="width:60px; height:60px; display: inline;"> </TD> 
+			 			</div>	
+			 				
+		 			</div> 	
+						
+						
+					<div id="zona">
+				        <INPUT TYPE="button" value="Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
+				        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="zonaprivada()">
+	   				</div>
+
+			 	</div>		 		
+			</FORM> 
+	
+		</div>
+
+	</body>
+
+</html>

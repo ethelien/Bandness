@@ -1,0 +1,123 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="../css/login.css">
+		<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
+		<script src="../js/jquery-1.5.2.min.js"></script>
+		<script src="../js/jquery.jsonp-2.2.1.js"></script>
+	
+		<script>
+		var $resultados;
+		
+		function leerGET(){
+ 		    var cadGET = location.search.substr(1,location.search.length);
+  			var arrGET = cadGET.split("&");
+  			var asocGET = new Array();
+  			var variable = "";
+  			var valor = "";
+  			for(i=0;i<arrGET.length;i++){
+  				 var aux = arrGET[i].split("=");
+   				 variable = aux[0];
+   				 valor = aux[1];
+   		 		asocGET[variable] = valor;
+  			}
+ 		 return asocGET;
+		} 
+		
+		
+		function obtenerDatos() {
+			
+			var paresVarValor = leerGET();
+			var valor = paresVarValor['Banda'];
+			
+		    resultados = $('#info');
+		    
+		    $.ajax({
+		        url: 'http://192.168.1.102/banda_informacion.php?banda='+valor,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                var landmark = '<h1>'+item.bio+'</h1>';
+			                alert(landmark);
+			                resultados.append(landmark);
+			            });
+			            mostrardatos();
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+			
+			function mostrardatos() {
+			    $('#info').html($resultados);
+			    $.mobile.pageLoading(true);
+			}
+			
+			function registrar(){
+       		 	window.open("http://WWw.bandness.com");
+			}
+			
+			function entrar(){
+       		 	window.open("file:///android_asset/www/html/banda_menuprincipal.html");
+			}
+
+		</script>
+		
+		
+	</head>
+
+	<body>
+		<div id="wrapper">	
+
+
+				 <div id="titulo_Bandness">
+				 	   <img src="../img/logo.png"/ style="width:90%; height: 100%">
+		         </div>
+		         
+				 <div id="base">
+				 		 		
+			 		<div id="logo">
+			 			<img src="../img/prueba_login.png"/ style="width:98%; height: 100%">
+			 		</div> 
+					 	
+			    	<div id="zona">
+						
+			            <TABLE align="center" id="zona" cellspacing="10">
+							 <TR>
+      							<TD align="right"><H1 style="display: inline;">Nombre:</H1></TD> <TD > <input type="text" id="N" name="Nombre" value=""/> </TD>
+							 </TR> 
+							 <TR>
+     							 <TD align="right"> <H1 style="display: inline;">Password:</H1></TD> <TD> <input type="password" name="Password" value=""/></TD>
+							</TR>
+						</TABLE>
+					
+
+					    <BUTTON id="Registrar" type="button" onclick="registrar()" style="display: inline;">
+					        <p><a title="Registrame">Registrame</a></p>
+					    </BUTTON>
+					    
+					    <BUTTON id="Entrar" type="button" onclick="entrar()">
+					        <p><a title="entrar">Continuar</a></p>
+					    </BUTTON>
+					
+				    </div>
+		
+			 	</div> 
+		
+			 
+		
+		</div>
+
+	</body>
+
+</html>

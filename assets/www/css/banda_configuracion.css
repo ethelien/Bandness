@@ -1,0 +1,55 @@
+/* 
+    Document   : banda_menuprincipal
+    Created on : Feb 24, 2012, 3:17:46 PM
+    Author     : kiko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+html, body{
+    top:5%;
+    background: black;
+    height: 95%;
+	overflow:inherit; /* triggers 100% height in Opera 9.5 */
+}
+
+#wrapper {
+	height:100%; /* gives layout 100% height */
+	text-align: center; 
+}
+
+#form {
+	height:98%; /* gives layout 100% height */
+}
+
+#base{
+	height:97%;
+	width: 98%;
+	color:#FFFFFF; 
+	background-color: #4a4f5a; 
+	border-radius: 5px; 
+	margin:2px 5px;
+	font-size:120%;
+}
+   
+
+h1{
+    font-weight: bolder;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: medium;
+    color: white;
+    height: 5%;
+    width: 96%;
+    display: inline-block;
+}
+
+input{
+    height: 30%;
+    width: 30%;
+}
