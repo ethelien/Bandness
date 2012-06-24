@@ -1,0 +1,160 @@
+/* 
+    Document   : inicio
+    Created on : Feb 3, 2012, 3:17:46 PM
+    Author     : kiko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+html{
+	width: 100%;
+	height:100%; /* gives layout 100% height */
+	overflow:inherit; /* triggers 100% height in Opera 9.5 */
+	background: #4c4c4c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4c4c4c 0%, #666666 10%, #595959 12%, #474747 12%, #2c2c2c 15%, #000000 29%, #111111 73%, #1c1c1c 91%, #2b2b2b 100%, #131313 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(10%,#666666), color-stop(12%,#595959), color-stop(12%,#474747), color-stop(15%,#2c2c2c), color-stop(29%,#000000), color-stop(73%,#111111), color-stop(91%,#1c1c1c), color-stop(100%,#2b2b2b), color-stop(100%,#131313)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* IE10+ */
+	background: linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+}
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#wrapper {
+    padding: 1%;
+}
+#form {
+	padding: 1%;
+    height: 100%;
+}
+#base {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 120%;
+    height: 90%;
+    left: 0;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+}
+
+#Busqueda {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    heigth: 10%;
+    width: 100%;
+}
+
+#Busqueda td{
+	width: 30%;
+}
+
+
+#resul, #formularioEstilo, #formularioCiudades, #formularioCercania, #resul2 {
+	position: absolute;
+	top: 20%;
+    background-color: #C0C0C0;
+    color: #FFFFFF;
+    display: inline-block;
+    height: 80%;
+    width: 100%;
+}
+#zona {
+    bottom: 0;
+    display: inline-block;
+    height: 13%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+#zona input {
+	font-size: small;
+    background-color: #404448;
+    border: medium none;
+    box-shadow: 0 0 3px #FFFFFF inset;
+    color: white;
+    float: left;
+}
+#cuadro {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 85px;
+    position: absolute;
+    text-align: center;
+    width: 50px;
+}
+#tabla {
+    left: 20%;
+    margin-left: auto;
+    position: absolute;
+    top: 10%;
+    width: 60%;
+    table-layout: fixed;
+    text-align: left;
+}
+
+#tabla td{
+	width: 50%;
+	padding-bottom: 5px;
+}
+
+#Estilo1, #Estilo2, #Estilo3, #Ciudad{
+	background-color:#FFFFFF; 
+	border-radius: 5px; 
+	border-color:#111111;
+	color:black;
+	border:none;
+	height: 100%;
+    width: 100%;
+}
+
+*#Dale_caña{
+	color: white;
+	margin-top: 15px;
+	background-color: #404448;
+	border-radius: 5px;
+    display: block;
+    font-size: large;
+    font-family: Georgia,"Tahoma",Times,serif;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+h1 {
+    color: white;
+    display: inline-block;
+    font-family: Tahoma;
+    font-size: medium;
+    font-weight: bolder;
+    height: 100%;
+    width: 100%;
+}
+button {
+    background: none repeat scroll 0 0 seagreen;
+    display: block;
+    font-family: Georgia,"Tahoma",Times,serif;
+    font-weight: bolder;
+    margin-left: 0;
+    margin-right: 0;
+}
+a {
+    text-decoration: none;
+}

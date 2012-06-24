@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/menu.css">
+<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
+<script src="../js/jquery-1.5.2.min.js"></script>
+<script src="../js/jquery.jsonp-2.2.1.js"></script>
+<script>
+    var $resultados;
+    var $valor;
+
+    function obtenerDatos() {
+        valor=document.getElementById("dato").value;
+        
+        if (document.getElementById("Estilo").checked){
+       	 var tipo=document.getElementById("Estilo").value;
+        }
+        else if (document.getElementById("Ciudad").checked){
+       	 var tipo=document.getElementById("Ciudad").value;
+        }
+        else {
+       	 var tipo=document.getElementById("Cercania").value;
+        }
+        
+		
+		alert(valor);
+		
+        resultados = $('#resulta');
+        
+        $.ajax({
+            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){
+                    var landmark = '<h1>'+item.bio+'</h1>';
+                    alert(landmark);
+                    resultados.append(landmark);
+                });
+                mostrardatos();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
+    
+    function mostrardatos() {
+        $('#resulta').html($resultados);
+        $.mobile.pageLoading(true);
+    }
+    
+    function bandas(){
+        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+        window.open("file:///android_asset/www/html/bandas.html");
+	}
+	
+	function configuracion(){
+        window.open("file:///android_asset/www/html/configuracion.html");
+	}
+	
+	function conciertos(){
+        window.open("file:///android_asset/www/html/conciertos.html");
+	}
+	
+	function diario(){
+        window.open("file:///android_asset/www/html/diario.html");
+	}
+	
+</script>
+
+</head>
+<body onload="$.mobile.pageLoading();">
+
+		<div id="base">
+		 
+	  		<TABLE align="center" id="Busqueda">
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="conciertos()"><H1 style="display: inline;">Eventos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR>
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR> 
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR> 
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR>  
+			</TABLE>
+			
+	 	</div>	
+
+</body>
+
+</html>

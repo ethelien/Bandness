@@ -1,0 +1,101 @@
+/* 
+    Document   : inicio
+    Created on : Feb 22, 2012, 17:10:40 PM
+    Author     : kiko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+html{
+	width: 100%;
+	height:100%; /* gives layout 100% height */
+	overflow:inherit; /* triggers 100% height in Opera 9.5 */
+	background:black; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#titulo_Bandness {
+	height:20%; /* gives layout 100% height */
+	width: 100%;
+	overflow: hidden;
+}
+
+#base{
+	height:97%;
+	width: 98%;
+	color:#FFFFFF; 
+	display: inline-block;
+	font-size:120%;
+}
+
+#logo{
+	height:50%; /* gives layout 100% height */
+	width: 98%;
+	overflow: hidden;
+	display: inline-block;
+}
+
+#zona{
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 45%;
+	margin: 5px 0;
+	overflow: hidden;
+}
+
+#zona input{
+	background-color:#FFFFFF; 
+	border-radius: 5px; 
+	border-color:#111111;
+	color:black;
+	border:none;
+	height: 100%;
+    width: 80%;
+}
+
+h1{
+    font-weight: bolder;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: medium;
+    color: white;
+}
+
+button {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: bolder;
+    display: inline-block;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: 5%;
+    border-radius: 5px; 
+    border:none;
+    height:3em;
+}
+
+#Registrar{
+	background-color:#333438;
+	border-color:#333438;
+}
+
+#Entrar{
+	background-color:#499ef8;
+	border-color:#499ef8;
+}
+
+
+a{
+    text-decoration: none
+}
+
