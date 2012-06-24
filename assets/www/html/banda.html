@@ -7,7 +7,7 @@ and open the template in the editor.
 	<head>
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../css/publico_banda.css">
+		<link rel="stylesheet" href="../css/banda.css">
 		<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
 		<script src="../js/jquery-1.5.2.min.js"></script>
 		<script src="../js/jquery.jsonp-2.2.1.js"></script>
@@ -57,6 +57,15 @@ and open the template in the editor.
 			        }
 			    });
 			}
+		
+		   	function continuar(){
+		        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+		        window.open("file:///android_asset/www/html/bandas.html");
+			}
+			
+			function zonaprivada(){
+		        window.open("file:///android_asset/www/html/login.html");
+			}
 			
 			function mostrardatos() {
 			    $('#info').html($resultados);
@@ -102,7 +111,7 @@ and open the template in the editor.
 						
 					<div id="zona">
 				        <INPUT TYPE="button" value="Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
-				        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="zonaprivada()">
+				        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="continuar()">
 	   				</div>
 
 			 	</div>		 		

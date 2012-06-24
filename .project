@@ -30,4 +30,11 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>res/drawable/bandnesspreloader.gif</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Escritorio/Vario_Bandness/bandnesspreloader.gif</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

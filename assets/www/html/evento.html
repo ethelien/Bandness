@@ -3,7 +3,7 @@
 <head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/banda_evento.css">
+<link rel="stylesheet" href="../css/evento.css">
 <script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
 <script src="../js/jquery-1.5.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
@@ -55,7 +55,8 @@
     }
     
     function continuar(){
-        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+        window.open("file:///android_asset/www/html/bandas.html);
 	}
 	
 	function configuracion(){
@@ -101,7 +102,7 @@
 				
 			<div id="zona">
 		        <INPUT TYPE="button" value="Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
-		        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="zonaprivada()">
+		        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="continuar()">
   			</div>
 
 	 	</div>	

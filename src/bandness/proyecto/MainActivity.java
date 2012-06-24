@@ -14,6 +14,8 @@ public class MainActivity extends DroidGap
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        super.loadUrl("file:///android_asset/www/index.html");
+        super.setIntegerProperty("splashscreen", R.drawable.splash);
+        super.loadUrl("file:///android_asset/www/index.html", 4000);
+        //super.loadUrl("file:///android_asset/www/index.html");
     }
 }

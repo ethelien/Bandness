@@ -53,12 +53,21 @@
         $.mobile.pageLoading(true);
     }
     
-    function continuar(){
-        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+    function bandas(){
+        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+        window.open("file:///android_asset/www/html/bandas.html");
 	}
 	
 	function configuracion(){
-        window.open("file:///android_asset/www/html/banda_configuracion.html");
+        window.open("file:///android_asset/www/html/configuracion.html");
+	}
+	
+	function conciertos(){
+        window.open("file:///android_asset/www/html/conciertos.html");
+	}
+	
+	function diario(){
+        window.open("file:///android_asset/www/html/diario.html");
 	}
 	
 </script>
@@ -68,18 +77,18 @@
 
 		<div id="base">
 		 
-	  		<TABLE table align="center" id="Busqueda">
+	  		<TABLE align="center" id="Busqueda">
 				<TR>
-	  				<TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+	  				<TD align="center" style="width:70%;" onclick="conciertos()"><H1 style="display: inline;">Eventos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
 				</TR>
 				<TR>
-	  				<TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+	  				<TD align="center" style="width:70%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
 				</TR> 
 				<TR>
-	  				<TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+	  				<TD align="center" style="width:70%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
 				</TR> 
 				<TR>
-	  				<TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+	  				<TD align="center" style="width:70%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
 				</TR>  
 			</TABLE>
 			

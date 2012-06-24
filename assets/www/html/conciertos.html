@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/banda_menuprincipal.css">
+<link rel="stylesheet" href="../css/conciertos.css">
 <script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
 <script src="../js/jquery-1.5.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
@@ -54,7 +53,7 @@
         $.mobile.pageLoading(true);
     }
     
-    function tablon(){
+    function continuar(){
         window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
 	}
 	
@@ -62,52 +61,27 @@
         window.open("file:///android_asset/www/html/banda_configuracion.html");
 	}
 	
-	function evento(){
-        window.open("file:///android_asset/www/html/banda_evento.html");
-	}
-	
 </script>
 
 </head>
 <body onload="$.mobile.pageLoading();">
 
-<div id="wrapper">
-<FORM id="form" METHOD=GET>
+ 	<h1>Conciertos a los que asistiré</h1>
 
-	 <h1>EVENTOS</h1>
-	 
-	 <div id="base">
-        
-	        <BUTTON id="Nuevo" type="button" onclick="evento()" style="display: inline; background-color:#499ef8; border-color:#000000;">
-				<p><a title="Nuevo">Nuevo</a></p>
-		    </BUTTON>
-						    
-			<BUTTON id="Editar" type="button" onclick="comprobar()" style="display: inline; background-color:#c3f079; border-color:#000000;">
-				<p><a title="Editar">Editar</a></p>
-				</BUTTON>
+		<div id="base">
+		 
+	  		<TABLE align="center" id="Busqueda">
+			  <tr>
+			    <td class="titulo">COLUMNA1</td>
+			    <td class="titulo">COLUMNA2</td>
+			    <td class="titulo">COLUMNA3</td>
+			    <td class="titulo">COLUMNA4</td>
+			    <td class="titulo">COLUMNA5</td>
+			    <td class="titulo">COLUMNA6</td>
+			  </tr>
+			</TABLE>
 			
-			<BUTTON id="Borrar" type="button" onclick="comprobar()" style="display: inline; background-color:#f66260; border-color:#000000;">
-				<p><a title="Borrar">Borrar</a></p>
-			</BUTTON>
-	        
-		 	<div id="resul">
-		 		<span id="resulta" rows="5" type="text" name="banda" onclick="continuar()"></span>
-		 	</div> 
-	 	 
-        <div id="nav-wrapper">
-            <ul id="nav">
-                <li><a href="" style="background-color:#499ef8; border-color:#000000;">Tablón</a></li>
-                <li><a href="" style="background-color:#333438; border-color:#000000;">Calendar</a></li>
-                <li><a href="" style="background-color:#333438; border-color:#000000;">Diario</a></li>
-                <li><a onclick="configuracion()" href="" style="background-color:#333438; border-color:#000000;">Config</a></li>
-            </ul>
-        </div>
-	 
-	 </div> 
-	 
-</FORM> 
-    
-</div>
+	 	</div>	
 
 </body>
 
