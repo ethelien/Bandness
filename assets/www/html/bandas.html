@@ -2,9 +2,87 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="../css/bandas.css">
+<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
+<script src="../js/jquery-1.5.2.min.js"></script>
+<script src="../js/jquery.jsonp-2.2.1.js"></script>
+<script>
+    var $resultados;
+    var $valor;
+
+    function obtenerDatos() {
+        valor=document.getElementById("dato").value;
+        
+        if (document.getElementById("Estilo").checked){
+       	 var tipo=document.getElementById("Estilo").value;
+        }
+        else if (document.getElementById("Ciudad").checked){
+       	 var tipo=document.getElementById("Ciudad").value;
+        }
+        else {
+       	 var tipo=document.getElementById("Cercania").value;
+        }
+        
+		
+		alert(valor);
+		
+        resultados = $('#resulta');
+        
+        $.ajax({
+            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){
+                    var landmark = '<h1>'+item.bio+'</h1>';
+                    alert(landmark);
+                    resultados.append(landmark);
+                });
+                mostrardatos();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
+    
+    function mostrardatos() {
+        $('#resulta').html($resultados);
+        $.mobile.pageLoading(true);
+    }
+    
+    function continuar(){
+        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+	}
+	
+	function configuracion(){
+        window.open("file:///android_asset/www/html/banda_configuracion.html");
+	}
+	
+</script>
+
 </head>
-<body>
+<body onload="$.mobile.pageLoading();">
+
+ 	<h1>Actualizaciones de bandas</h1>
+
+		<div id="base">
+		 
+	  		<TABLE align="center" id="Busqueda">
+			  <tr>
+			    <td class="titulo">COLUMNA1</td>
+			    <td class="titulo">COLUMNA2</td>
+			    <td class="titulo">COLUMNA3</td>
+			    <td class="titulo">COLUMNA4</td>
+			    <td class="titulo">COLUMNA5</td>
+			    <td class="titulo">COLUMNA6</td>
+			  </tr>
+			</TABLE>
+			
+	 	</div>		
 
 </body>
+
 </html>
