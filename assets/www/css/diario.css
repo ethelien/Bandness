@@ -43,28 +43,26 @@ body {
     width: 100%;
 }
 
-#amigos {
+#fechas{
 	position: absolute;
 	bottom:0;
     color: #FFFFFF;
     display: inline-block;
-    height: 20%;
+    height: 18%;
     width: 100%;
 }
 
-#Busqueda {
-	width:200px;
-	height:100px;
-	overflow: auto;
-	border:1px solid #000000; /* Solo lo puse para que se vea el cuadro*/ 
-}
-
-#Busqueda input {
+#flechaIzq{
     border: medium none;
     color: white;
     background-image: url("../img/imagen_prueba.png");
 }
 
+#flechaDer{
+    border: medium none;
+    color: white;
+    background-image: url("../img/imagen_prueba.png");
+}
 
 #titulo
 	{
@@ -98,7 +96,7 @@ h3 {
 	display: inline-block;
     color: white;
     font-family: Tahoma;
-    font-size: x-small;
+    font-size: large;
     font-weight: bolder;
     width: 100%;
     margin-top: 0px;

@@ -10,6 +10,18 @@
     var $resultados;
     var $valor;
 
+    function disminuir(){
+        //Solo si el valor del campo es diferente de 0
+        if ($('#quantity').val() != 0)
+            //Decrementamos su valor
+            $('#quantity').val(parseInt($('#quantity').val()) - 1);
+    }
+
+    function aumentar(){
+        //Aumentamos el valor del campo
+        $('#quantity').val(parseInt($('#quantity').val()) + 1);
+    }
+    
     function obtenerDatos() {
         valor=document.getElementById("dato").value;
         
@@ -69,31 +81,58 @@
  	<h1>Diario</h1>
 
 		<div id="base">
-		 
-	  		<TABLE align="center" id="Busqueda">
-			  <tr>
-			    <td class="titulo">COLUMNA1</td>
-			    <td class="titulo">COLUMNA2</td>
-			    <td class="titulo">COLUMNA3</td>
-			    <td class="titulo">COLUMNA4</td>
-			    <td class="titulo">COLUMNA5</td>
-			    <td class="titulo">COLUMNA6</td>
-			  </tr>
-			</TABLE>
-			
+ 
+	       <div style="width:100%; height:100%; overflow:auto;">
+	         <table cellspacing="0" cellpadding="1" border="1" width="100%" >
+	           <tr>
+	             <td><h1>Enero</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Febrero</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Marzo</h1></td>
+	           </tr>
+	            <tr>
+	             <td><h1>Abril</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Mayo</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Junio</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Julio</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Agosto</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Septiembre</h1></td>
+	           </tr>
+	            <tr>
+	             <td><h1>Octubre</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Noviembre</h1></td>
+	           </tr>
+	           <tr>
+	             <td><h1>Diciembre</h1></td>
+	           </tr>
+	         </table>  
+	       </div>
+	
 	 	</div>	
 	 	
-	 	<div id="amigos">
-	  		 <h2>Conciertos a los que asistiran mis amigos</h2>
-	  		 	
+	 	<div id="fechas"> 	
 		  		 <TABLE align="center" id="Busqueda">
 				  <tr>
-				    <td class="titulo">COLUMNA1</td>
-				    <td class="titulo">COLUMNA2</td>
-				    <td class="titulo">COLUMNA3</td>
-				    <td class="titulo">COLUMNA4</td>
-				    <td class="titulo">COLUMNA5</td>
-				    <td class="titulo">COLUMNA6</td>
+					<TR>
+		  				<TD align="center" style="width:25%;"><INPUT TYPE="button" id="flechaIzq" style="width:50px; height:50px; display: inline;" onclick="disminuir()"> </TD>
+		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="4" /></TD> 
+		  				<TD align="center" style="width:25%;"><INPUT TYPE="button" id="flechaDer" style="width:50px; height:50px; display: inline;"  onclick="aumentar()"> </TD>
+					</TR> 
 				  </tr>
 				</TABLE>
 	 	</div> 	

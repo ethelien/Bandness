@@ -12,44 +12,116 @@
 */
 
 
-html, body{
-    top:5%;
-    background: black;
-    height: 95%;
-	overflow:inherit; /* triggers 100% height in Opera 9.5 */
-}
 
-#wrapper {
+html{
+	width: 100%;
 	height:100%; /* gives layout 100% height */
-	text-align: center; 
+	overflow:inherit; /* triggers 100% height in Opera 9.5 */
+	background: #4c4c4c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4c4c4c 0%, #666666 10%, #595959 12%, #474747 12%, #2c2c2c 15%, #000000 29%, #111111 73%, #1c1c1c 91%, #2b2b2b 100%, #131313 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(10%,#666666), color-stop(12%,#595959), color-stop(12%,#474747), color-stop(15%,#2c2c2c), color-stop(29%,#000000), color-stop(73%,#111111), color-stop(91%,#1c1c1c), color-stop(100%,#2b2b2b), color-stop(100%,#131313)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* IE10+ */
+	background: linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
 }
 
-#form {
-	height:98%; /* gives layout 100% height */
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-#base{
-	height:97%;
-	width: 98%;
-	color:#FFFFFF; 
-	background-color: #4a4f5a; 
-	border-radius: 5px; 
-	margin:2px 5px;
-	font-size:120%;
-}
-   
-
-h1{
-    font-weight: bolder;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: medium;
-    color: white;
-    height: 5%;
-    width: 96%;
+#base {
+	position: absolute;
+	top: 10%;
+    background-color: #C0C0C0;
+    color: #FFFFFF;
     display: inline-block;
+    height: 90%;
+    width: 100%;
 }
 
-input{
-    height: 30%;
-    width: 30%;
+#Busqueda {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    height: 90%;
+    width: 100%;
+    border-spacing:0px 20%;   
+}
+
+#Busqueda input {
+    border: medium none;
+    color: white;
+    background-image: url("../img/imagen_prueba.png");
+}
+
+#info {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    height: 10%;
+    width: 100%;
+    border-spacing:0px 20%;   
+}
+
+#info input {
+    border: medium none;
+    color: white;
+    background-image: url("../img/imagen_prueba.png");
+}
+
+
+#titulo
+	{
+	color: #000000;
+	background:#00FF00;
+	font-weight: bold;
+	}
+
+h1 {
+    color: white;
+    display: inline-block;
+    font-family: Tahoma;
+    font-size: medium;
+    font-weight: bolder;
+    height: 5%;
+    width: 100%;
+}
+
+h2 {
+	display: inline-block;
+    color: white;
+    font-family: Tahoma;
+    font-size: small;
+    font-weight: bolder;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h3 {
+	display: inline-block;
+    color: white;
+    font-family: Tahoma;
+    font-size: x-small;
+    font-weight: bolder;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+button {
+    background: none repeat scroll 0 0 seagreen;
+    display: block;
+    font-family: Georgia,"Tahoma",Times,serif;
+    font-weight: bolder;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+a {
+    text-decoration: none;
 }

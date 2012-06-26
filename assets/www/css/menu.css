@@ -1,18 +1,3 @@
-/* 
-    Document   : banda_menuprincipal
-    Created on : Feb 24, 2012, 3:17:46 PM
-    Author     : kiko
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
-
-
 html{
 	width: 100%;
 	height:100%; /* gives layout 100% height */
@@ -47,14 +32,19 @@ body {
     margin-right: auto;
     table-layout: fixed;
     height: 100%;
-    width: 100%;
-    border-spacing:0px 20%;   
+    width: 100%;     
 }
 
 #Busqueda input {
     border: medium none;
     color: white;
     background-image: url("../img/imagen_prueba.png");
+}
+
+#Fila{
+	border-bottom-style: solid; 
+    border-bottom-color: gray;
+    border-bottom-width: 1px; 
 }
 
 h1 {
@@ -65,39 +55,4 @@ h1 {
     font-weight: bolder;
     height: 5%;
     width: 100%;
-}
-
-h2 {
-	display: inline-block;
-    color: white;
-    font-family: Tahoma;
-    font-size: small;
-    font-weight: bolder;
-    width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-h3 {
-	display: inline-block;
-    color: white;
-    font-family: Tahoma;
-    font-size: x-small;
-    font-weight: bolder;
-    width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-button {
-    background: none repeat scroll 0 0 seagreen;
-    display: block;
-    font-family: Georgia,"Tahoma",Times,serif;
-    font-weight: bolder;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-a {
-    text-decoration: none;
 }

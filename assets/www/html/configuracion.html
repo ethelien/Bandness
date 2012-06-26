@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/configuracion.css">
 <script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
@@ -58,8 +57,8 @@
         window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
 	}
 	
-	function zonaprivada(){
-        window.open("file:///android_asset/www/html/login.html");
+	function configuracion(){
+        window.open("file:///android_asset/www/html/banda_configuracion.html");
 	}
 	
 </script>
@@ -67,21 +66,33 @@
 </head>
 <body onload="$.mobile.pageLoading();">
 
-<div id="wrapper">
-<FORM id="form" METHOD=GET>
+ 	<h1>Configuración</h1>
 
-	 <h1>CONFIGURACIÓN</h1>
-	 
-	 <div id="base">
-          
-          <INPUT id="Activar notificaciones" type="radio" name="tipo" value="ES"><br>     
-          <INPUT id="Activar geolocalizacion" type="radio" name="tipo" value="ES">     
-		
-	 </div> 
-	 
-</FORM> 
-    
-</div>
+		<div id="base">
+		 
+	  		<TABLE align="center" id="Busqueda">
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="conciertos()"><H1 style="display: inline;">Eventos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR>
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR> 
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR> 
+				<TR>
+	  				<TD align="center" style="width:70%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				</TR>  
+			</TABLE>
+			
+			<TABLE id="info">
+				<TR>
+	  				<TD align="center" style="width:50%;" onclick="conciertos()"><INPUT TYPE="button" id="Activo" style="display: inline;"> </TD> 
+	  				<TD align="center" style="width:50%;" onclick="conciertos()"><INPUT TYPE="button" id="Inactivo" style="display: inline;"> </TD> 
+				</TR>
+			</TABLE>
+			
+	 	</div>		
 
 </body>
 

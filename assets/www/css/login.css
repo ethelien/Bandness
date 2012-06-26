@@ -32,16 +32,16 @@ body {
 }
 
 #base{
-	height:97%;
-	width: 98%;
+	height:80%;
+	width: 100%;
 	color:#FFFFFF; 
 	display: inline-block;
 	font-size:120%;
 }
 
 #logo{
-	height:50%; /* gives layout 100% height */
-	width: 98%;
+	height:60%; /* gives layout 100% height */
+	width: 100%;
 	overflow: hidden;
 	display: inline-block;
 }
@@ -50,8 +50,7 @@ body {
 	left: 0px;
 	bottom: 0px;
 	width: 100%;
-	height: 45%;
-	margin: 5px 0;
+	height: 40%;
 	overflow: hidden;
 }
 

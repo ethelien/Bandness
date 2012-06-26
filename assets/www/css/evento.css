@@ -31,12 +31,8 @@ body {
     padding: 0;
     text-align: center;
 }
-#wrapper {
-    padding: 1%;
-}
-#form {
-    height: 100%;
-}
+
+
 #base {
     color: #FFFFFF;
     display: inline-block;
