@@ -1,17 +1,3 @@
-/* 
-    Document   : inicio
-    Created on : Feb 3, 2012, 3:17:46 PM
-    Author     : kiko
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
-
 html{
 	width: 100%;
 	height:100%; /* gives layout 100% height */
@@ -31,18 +17,14 @@ body {
     text-align: center;
 }
 
-#form {
-    padding: 1%;
-    height: 100%;
-}
 #base {
+	margin-top:2%;
     color: #FFFFFF;
     display: inline-block;
     font-size: 120%;
-    height: 95%;
+    height: 98%;
     left: 0;
     position: absolute;
-    top: 5%;
     width: 100%;
 }
 
@@ -62,7 +44,7 @@ body {
 
 #resul{
 	position: absolute;
-	top: 20%;
+	top: 80px;
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
@@ -72,7 +54,7 @@ body {
 #zona {
     bottom: 0;
     display: inline-block;
-    height: 13%;
+    height: 60px;
     left: 0;
     overflow: hidden;
     position: absolute;
@@ -120,17 +102,4 @@ h2 {
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
-}
-
-button {
-    background: none repeat scroll 0 0 seagreen;
-    display: block;
-    font-family: Georgia,"Tahoma",Times,serif;
-    font-weight: bolder;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-a {
-    text-decoration: none;
 }

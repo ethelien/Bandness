@@ -58,6 +58,20 @@ body {
     width: 100%;
 }
 
+#Busqueda input {
+	background: transparent url("../img/spirtebandnessmovil.png") no-repeat;
+	width:140px;
+	height:140px;
+}
+
+#Estilos{
+	background-position: -871px -80px;
+}
+
+#Estilos:hover{
+	background-position: -871px -288px;
+}
+
 
 #resul, #formularioEstilo, #formularioCiudades, #formularioCercania, #resul2 {
 	position: absolute;
@@ -65,7 +79,7 @@ body {
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
-    height: 80%;
+    height: 70%;
     width: 100%;
 }
 

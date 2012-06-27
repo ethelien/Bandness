@@ -34,13 +34,13 @@ body {
 
 
 #base {
+	margin-top:2%;
     color: #FFFFFF;
     display: inline-block;
     font-size: 120%;
-    height: 95%;
+    height: 98%;
     left: 0;
     position: absolute;
-    top: 5%;
     width: 100%;
 }
 
@@ -60,15 +60,16 @@ body {
 
 #resul{
 	position: absolute;
-	top: 20%;
+	top: 80px;
     display: inline-block;
     height: 80%;
     width: 100%;
 }
+
 #zona {
     bottom: 0;
     display: inline-block;
-    height: 13%;
+    height: 60px;
     left: 0;
     overflow: hidden;
     position: absolute;
@@ -139,17 +140,4 @@ h3 {
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
-}
-
-button {
-    background: none repeat scroll 0 0 seagreen;
-    display: block;
-    font-family: Georgia,"Tahoma",Times,serif;
-    font-weight: bolder;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-a {
-    text-decoration: none;
 }
