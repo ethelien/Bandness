@@ -77,35 +77,38 @@ and open the template in the editor.
 	</head>
 
 	<body>
-		 <div id="titulo_Bandness">
-		 	   <img src="../img/logo.png"/ style="width:90%; height: 100%">
-         </div>
          
 		 <div id="base">
 		 		 		
 	 		<div id="logo">
-	 			<img src="../img/prueba_login.png" style="width:98%; height: 100%">
 	 		</div> 
 			 	
 	    	<div id="zona">
 				
 	            <TABLE align="center" id="zona" cellspacing="10">
 					 <TR>
-						<TD align="right"><H1 style="display: inline;">Nombre:</H1></TD> <TD > <input type="text" id="N" name="Nombre" value=""/> </TD>
+						<TD align="right"><H1 style="display: inline;">User</H1></TD> 
+						<TD align="left"> <input type="text" id="N" name="Nombre" value=""/> </TD>
 					 </TR> 
 					 <TR>
-						 <TD align="right"> <H1 style="display: inline;">Password:</H1></TD> <TD> <input type="password" name="Password" value=""/></TD>
+						<TD align="center" colspan="2"><H1 style="display: inline;">MENSAJE_ USUARIO</H1></TD> 
+					 </TR> 
+					 <TR>
+						 <TD align="right";> <H1 style="display: inline;">Pass</H1></TD> 
+						 <TD align="left"> <input type="password" name="Password" value=""/></TD>
 					</TR>
+					<TR>
+						<TD align="center" colspan="2"><H1 style="display: inline;">MENSAJE_ PASSWORD</H1></TD> 
+					 </TR> 
 				</TABLE>
 			
-
-			    <BUTTON id="Registrar" type="button" onclick="registrar()" style="display: inline;">
-			        <p><a title="Registrame">Registrame</a></p>
+			
+				<BUTTON id="Registrar" type="button" onclick="registrar()" style="display: inline;">
 			    </BUTTON>
 			    
-			    <BUTTON id="Entrar" type="button" onclick="entrar()">
-			        <p><a title="entrar">¡Entrar!</a></p>
+				<BUTTON id="Entrar" type="button" onclick="entrar()">
 			    </BUTTON>
+			    
 			
 		    </div>
 

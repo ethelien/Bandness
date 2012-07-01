@@ -16,7 +16,7 @@ html{
 	width: 100%;
 	height:100%; /* gives layout 100% height */
 	overflow:inherit; /* triggers 100% height in Opera 9.5 */
-	background:black; 
+	background:white; 
 }
 
 body {
@@ -25,14 +25,9 @@ body {
     text-align: center;
 }
 
-#titulo_Bandness {
-	height:20%; /* gives layout 100% height */
-	width: 100%;
-	overflow: hidden;
-}
-
 #base{
-	height:80%;
+	margin-top: 10%;
+	height:95%;
 	width: 100%;
 	color:#FFFFFF; 
 	display: inline-block;
@@ -40,8 +35,12 @@ body {
 }
 
 #logo{
-	height:60%; /* gives layout 100% height */
-	width: 100%;
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_Busqueda.png");
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height:240px; /* gives layout 100% height */
+	width: 200px;
 	overflow: hidden;
 	display: inline-block;
 }
@@ -59,38 +58,45 @@ body {
 	border-radius: 5px; 
 	border-color:#111111;
 	color:black;
-	border:none;
 	height: 100%;
-    width: 80%;
+    width: 90%;
 }
 
 h1{
     font-weight: bolder;
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: medium;
-    color: white;
+    color: black;
 }
 
 button {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: bolder;
     display: inline-block;
-    margin-top: 2%;
+    margin-top: 5%;
     margin-left: auto;
-    margin-right: 5%;
-    border-radius: 5px; 
+    margin-right: auto;
     border:none;
-    height:3em;
 }
 
 #Registrar{
-	background-color:#333438;
-	border-color:#333438;
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+	background-position: -31px -405px;
+	height:45px; /* gives layout 100% height */
+	width: 110px;
+	overflow: hidden;
+	display: inline-block;
 }
 
 #Entrar{
-	background-color:#499ef8;
-	border-color:#499ef8;
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+	background-position: -142px -405px;
+	height:45px; /* gives layout 100% height */
+	width: 90px;
+	overflow: hidden;
+	display: inline-block;
 }
 
 

@@ -58,13 +58,13 @@ body {
     width: 100%;
 }
 
-#Busqueda input {
+#Busqueda img {
 	border:none;
-	border-radius: 4px;
+	border-radius: 6px;
 	background-image:url("../img/spirtebandnessmovil_Busqueda.png");
 	background-repeat: no-repeat;
-	width:51px;
-	height:51px;
+	width:50px;
+	height:50px;
 }
 
 #Estilos{
@@ -92,17 +92,13 @@ body {
 }
 
 
-
-
-
-
 #resul, #formularioEstilo, #formularioCiudades, #formularioCercania, #resul2 {
 	position: absolute;
 	top: 120px;
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
-    height: 70%;
+    height: 80%;
     width: 100%;
 }
 
@@ -165,7 +161,7 @@ body {
 #zona2 input {
 	font-size: small;
 	background-color: transparent;
-    background-image:url("../img/spirtebandnessmovil_Busqueda.png");
+    background-image:url("../img/spirtebandnessmovil_40.png");
 	background-repeat: no-repeat;
     border: medium none;
     box-shadow: 0 0 3px #FFFFFF inset;
@@ -174,7 +170,8 @@ body {
 }
 
 #Entrada_Bandness{
-	background-position: -40px -240px;
+	background-position: -20px -250px;
+	text-align: center;
 }
 
 

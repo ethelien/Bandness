@@ -48,9 +48,32 @@ body {
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
-    height: 80%;
+    height: 85%;
     width: 100%;
 }
+
+
+#datos {
+	padding-left: 5px;
+	padding-right: 5px;
+    width:100%-10px;
+}
+
+#eventos {
+	padding-left: 5px;
+	padding-right: 5px;
+    width:100%-10px;
+}
+
+#fecha_evento{
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_Busqueda.png");
+	background-repeat: no-repeat;
+	background-position: -582px -137px;
+	text-align: center;
+	border: none;
+}
+
 #zona {
     bottom: 0;
     display: inline-block;
@@ -69,24 +92,41 @@ body {
     float: left;
 }
 
-#datos {
-	padding-left: 5px;
-	padding-right: 5px;
-    width:100%-10px;
+
+#zona2 {
+    bottom: 0;
+    display: inline-block;
+    height: 60px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
 }
 
-#eventos {
-	padding-left: 5px;
-	padding-right: 5px;
-    width:100%-10px;
+#zona2 input {
+	font-size: small;
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+    border: medium none;
+    box-shadow: 0 0 3px #FFFFFF inset;
+    color: white;
+    float: left;
 }
+
+#Entrada_Bandness{
+	background-position: -20px -250px;
+	text-align: center;
+}
+
 
 
 h1 {
     color: white;
     display: inline-block;
     font-family: Tahoma;
-    font-size: small;
+    font-size: large;
     font-weight: bolder;
     height: 5%;
     width: 100%;

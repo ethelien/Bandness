@@ -10,6 +10,25 @@
 <script>
     var $resultados;
     var $valor;
+    
+    function disminuir(){
+        //Solo si el valor del campo es diferente de 0
+        if ($('#quantity').val() != 0)
+            //Decrementamos su valor
+            $('#quantity').val(parseInt($('#quantity').val()) - 1);
+    }
+
+    function aumentar(){
+        //Aumentamos el valor del campo
+        $('#quantity').val(parseInt($('#quantity').val()) + 1);
+    }
+    
+    
+    // PREGUNTAR
+    function cambio(){
+        //Aumentamos el valor del campo
+        $('#quantity').val(parseInt($('#quantity').val()) + 1);
+    }
 
     function obtenerDatos() {
         valor=document.getElementById("dato").value;
@@ -73,7 +92,7 @@
 		 
 	  		<TABLE align="center" id="Busqueda">
 				<TR>
-	  				<TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD>
+	  				<TD align="center" style="width:30%;"><INPUT TYPE="button" id="fecha_evento" style="width:72px; height:72px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD>
 				</TR> 
 			</TABLE>
 			<div id="resul">
@@ -92,7 +111,9 @@
 				
 				<TABLE align="center" id="botones">
 					<TR>
-		  				<TD align="center" style="width:25%;"><h2 id="Asistir" style="display: inline;">68</h2></TD> <TD align="center" style="width:25%;"><INPUT TYPE="button" id="mapa" style="width:50px; height:50px; display: inline;"> </TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px; display: inline;"> </TD>
+		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white;"}></TD>
+		  			    <TD align="center" style="width:25%;"><INPUT TYPE="button" id="mapa" style="width:50px; height:50px; display: inline;"> </TD>
+		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px; display: inline;"  onclick="cambio()"> </TD>
 					</TR> 
 				</TABLE>	
 	 				
@@ -100,9 +121,13 @@
 				
 				
 			<div id="zona">
-		        <INPUT TYPE="button" value="Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
+		        <INPUT TYPE="button" style="width:50%; height:100%;" onclick="zonaprivada()">
 		        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="continuar()">
   			</div>
+  			
+  			<div id="zona2">
+		        <INPUT TYPE="button" id="Entrada_Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
+		   	</div>
 
 	 	</div>	
 

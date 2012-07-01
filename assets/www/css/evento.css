@@ -52,10 +52,13 @@ body {
     width: 100%;
 }
 
-#Busqueda input {
-    border: medium none;
-    color: white;
-    background-image: url("../img/imagen_prueba.png");
+#fecha_evento{
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_Busqueda.png");
+	background-repeat: no-repeat;
+	background-position: -582px -137px;
+	text-align: center;
+	border: none;
 }
 
 #resul{
@@ -64,6 +67,44 @@ body {
     display: inline-block;
     height: 80%;
     width: 100%;
+}
+
+
+#datos {
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+    width:100%-10px;
+}
+
+#botones {
+    position: absolute;
+    bottom: 25%;
+    heigth: 10%;
+    width: 90%;
+}
+
+#botones input {
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+}
+
+
+#Asistir{
+	font-size: large;
+}
+
+#mapa{
+	background-position: -822px -101px;
+
+}
+
+#confirmar{
+	background-position: -814px -150px;
+
 }
 
 #zona {
@@ -84,36 +125,38 @@ body {
     float: left;
 }
 
-#datos {
-	padding-top: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
-    width:100%-10px;
-}
-
-#botones {
+#zona2 {
+    bottom: 0;
+    display: inline-block;
+    height: 60px;
+    left: 0;
+    overflow: hidden;
     position: absolute;
-    bottom: 25%;
-    heigth: 10%;
-    width: 90%;
+    width: 100%;
+    z-index: 100;
 }
 
-#Asistir{
-	font-size: large;
-}
-
-#mapa{
+#zona2 input {
+	font-size: small;
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
     border: medium none;
+    box-shadow: 0 0 3px #FFFFFF inset;
     color: white;
-    background-image: url("../img/imagen_prueba.png");
+    float: left;
 }
 
+#Entrada_Bandness{
+	background-position: -20px -250px;
+	text-align: center;
+}
 
 h1 {
     color: white;
     display: inline-block;
     font-family: Tahoma;
-    font-size: medium;
+    font-size: large;
     font-weight: bolder;
     height: 5%;
     width: 100%;
