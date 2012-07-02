@@ -12,7 +12,13 @@
 
 
 #confirmar{
-	background-position: -814px -150px;
+	background: -814px -150px;
+	display:inline;
+}
+
+#confirmado{
+	background: -813px -207px;
+	display:none;
 }
 
 </style>
@@ -23,21 +29,27 @@
     var $valor;
       
     function cambiar(){
-		alert('1');
 
         //Aumentamos el valor del campo
-        div = document.getElementById('confirmar');
-        if(div.style.background-position == "-814px -150px")
-        	{
-        	div.style.background-position = "-814px -216px";
-            //$('#quantity').val(parseInt($('#quantity').val()) + 1); 	
-    		alert('2');
-        	}
+        var div = document.getElementById('confirmar');
+        var div2 = document.getElementById('confirmado');
+        
+        if(div.style.display == 'none'){
+        	div.style.display = 'inline';
+        	div2.style.display = 'none';
+
+            $('#quantity').val(parseInt($('#quantity').val()) - 1); 	
+        }
         
         else{
-        	div.style.background-position = '-814px -150px';
-    		alert('3');
+        	div.style.display = 'none';
+        	div2.style.display = 'inline';
+        	
+            $('#quantity').val(parseInt($('#quantity').val()) + 1); 	
+
+        
         }
+        
     }
         
     function obtenerDatos() {
@@ -121,11 +133,11 @@
 				
 				<TABLE align="center" id="botones">
 					<TR>
-		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white;"></TD>
+		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white; background-image:none;"></TD>
 		  			    <TD align="center" style="width:25%;"><INPUT TYPE="button" id="mapa" style="width:50px; height:50px; display: inline;"> </TD>
-		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px; display: inline;"  onclick="cambiar()"> </TD>
+		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px"  onclick="cambiar()"> <INPUT TYPE="button" id="confirmado" style="width:100px; height:50px"  onclick="cambiar()"> </TD>
 					</TR> 
-				</TABLE>	
+				</TABLE>				
 	 				
  			</div> 	
 				

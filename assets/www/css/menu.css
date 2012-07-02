@@ -35,11 +35,19 @@ body {
     width: 100%;     
 }
 
+#Eventos{
+	background-position: -153px -1275px;
+}
+
 #Busqueda input {
     border: medium none;
     color: white;
-    background-image: url("../img/imagen_prueba.png");
-}
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_60.png");
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+	}
 
 #Fila{
 	border-bottom-style: solid; 
