@@ -7,29 +7,39 @@
 <script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
 <script src="../js/jquery-1.5.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
+
+<style type="text/css">
+
+
+#confirmar{
+	background-position: -814px -150px;
+}
+
+</style>
+
+
 <script>
     var $resultados;
     var $valor;
-    
-    function disminuir(){
-        //Solo si el valor del campo es diferente de 0
-        if ($('#quantity').val() != 0)
-            //Decrementamos su valor
-            $('#quantity').val(parseInt($('#quantity').val()) - 1);
-    }
+      
+    function cambiar(){
+		alert('1');
 
-    function aumentar(){
         //Aumentamos el valor del campo
-        $('#quantity').val(parseInt($('#quantity').val()) + 1);
+        div = document.getElementById('confirmar');
+        if(div.style.background-position == "-814px -150px")
+        	{
+        	div.style.background-position = "-814px -216px";
+            //$('#quantity').val(parseInt($('#quantity').val()) + 1); 	
+    		alert('2');
+        	}
+        
+        else{
+        	div.style.background-position = '-814px -150px';
+    		alert('3');
+        }
     }
-    
-    
-    // PREGUNTAR
-    function cambio(){
-        //Aumentamos el valor del campo
-        $('#quantity').val(parseInt($('#quantity').val()) + 1);
-    }
-
+        
     function obtenerDatos() {
         valor=document.getElementById("dato").value;
         
@@ -75,11 +85,11 @@
     
     function continuar(){
         //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
-        window.open("file:///android_asset/www/html/bandas.html);
+        window.open("file:///android_asset/www/html/bandas.html");
 	}
 	
 	function configuracion(){
-        window.open("file:///android_asset/www/html/banda_configuracion.html");
+        window.open("file:///android_asset/www/html/configuracion.html");
 	}
 	
 </script>
@@ -111,9 +121,9 @@
 				
 				<TABLE align="center" id="botones">
 					<TR>
-		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white;"}></TD>
+		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white;"></TD>
 		  			    <TD align="center" style="width:25%;"><INPUT TYPE="button" id="mapa" style="width:50px; height:50px; display: inline;"> </TD>
-		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px; display: inline;"  onclick="cambio()"> </TD>
+		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px; display: inline;"  onclick="cambiar()"> </TD>
 					</TR> 
 				</TABLE>	
 	 				
