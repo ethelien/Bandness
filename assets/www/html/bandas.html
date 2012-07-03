@@ -10,37 +10,63 @@
     var $resultados;
     var $valor;
 
+	var numero = 0;
+	var landmark;
+	 
+	function addNewRow()
+	{
+	  // obtenemos acceso a la tabla por su ID
+	  var TABLE = document.getElementById("bandas");
+	  // obtenemos acceso a la fila maestra por su ID
+	  var TROW = document.getElementById("fila");
+	  // tomamos la celda
+	  var content = TROW.getElementsByTagName("td");
+	  // creamos una nueva fila
+	  var newRow = TABLE.insertRow(-1);
+	  newRow.className = TROW.attributes['class'].value;
+	  // creamos una nueva celda
+	  var newCell = newRow.insertCell(newRow.cells.length)
+	  // creamos una nueva ID para el examinador
+	  //newID = 'file_' + (++numero);
+	 
+	  // creamos un nuevo control
+	  //txt = '<input type="file" id="' + newID  + '" size="50" />'
+	 
+	  // y lo asignamos a la celda
+	  newCell.innerHTML = landmark;
+	 
+	  // aviso ;)
+	  //alert(txt)
+	}
+
     function obtenerDatos() {
-        valor=document.getElementById("dato").value;
+        //valor=document.getElementById("dato").value;
         
-        if (document.getElementById("Estilo").checked){
-       	 var tipo=document.getElementById("Estilo").value;
-        }
-        else if (document.getElementById("Ciudad").checked){
-       	 var tipo=document.getElementById("Ciudad").value;
-        }
-        else {
-       	 var tipo=document.getElementById("Cercania").value;
-        }
+        //if (document.getElementById("Estilo").checked){
+       	// var tipo=document.getElementById("Estilo").value;
+        //}
+        //else if (document.getElementById("Ciudad").checked){
+       	// var tipo=document.getElementById("Ciudad").value;
+        //}
+        //else {
+       	// var tipo=document.getElementById("Cercania").value;
+        //}
         
 		
-		alert(valor);
-		
-        resultados = $('#resulta');
+        //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            url: 'http://192.168.1.101/banda_nombre.php',
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
             timeout: 5000,
             success: function(data/*, status*/){
                 $.each(data, function(i,item){
-                    var landmark = '<h1>'+item.bio+'</h1>';
-                    alert(landmark);
-                    resultados.append(landmark);
+                    landmark = '<h2>'+item.name+'</h2>';
+                    addNewRow();
                 });
-                mostrardatos();
+                //mostrardatos();
             },
             error: function(){
                 alert('no va');
@@ -67,18 +93,13 @@
 <body>
 
  	 <div id="base">
-	 
-	 	<h1 style="height:30px;">Actualizaciones de bandas</h1>
-	 
+	  
+	 	<h1 style="height:30px;">Actualizaciones de bandas<button style="height:30px; display:inline;"  onclick="obtenerDatos()"></button></h1>
+
 	 	<div id="resul">
-	 	  	<TABLE align="center" id="Busqueda">
-			  <tr>
-			    <td class="titulo">COLUMNA1</td>
-			    <td class="titulo">COLUMNA2</td>
-			    <td class="titulo">COLUMNA3</td>
-			    <td class="titulo">COLUMNA4</td>
-			    <td class="titulo">COLUMNA5</td>
-			    <td class="titulo">COLUMNA6</td>
+	 	  	<TABLE align="center" id="bandas">
+			  <tr class="filas" id="fila">
+			    <td class="celdas" id="celda" style="display:none;">COLUMNA1</td>
 			  </tr>
 			</TABLE>
 		</div>

@@ -36,7 +36,19 @@ body {
 }
 
 #Eventos{
-	background-position: -153px -1275px;
+	background-position: -60px -770px;
+}
+
+#Bandas{
+	background-position: -160px -770px;
+}
+
+#Diario{
+	background-position: -280px -760px;
+}
+
+#Config{
+	background-position: -410px -770px;
 }
 
 #Busqueda input {
