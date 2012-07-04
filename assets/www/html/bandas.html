@@ -9,10 +9,41 @@
 <script>
     var $resultados;
     var $valor;
+    var $Banda;
+    var $tipo;
+    var $estilo2;
+    var $estilo3;
+    var $name;
 
 	var numero = 0;
 	var landmark;
 	 
+	function leerGET(){
+		    var cadGET = location.search.substr(1,location.search.length);
+			var arrGET = cadGET.split("&");
+			var asocGET = new Array();
+			var variable = "";
+			var valor = "";
+			for(i=0;i<arrGET.length;i++){
+				 var aux = arrGET[i].split("=");
+				 variable = aux[0];
+				 valor = aux[1];
+		 		asocGET[variable] = valor;
+			}
+		 return asocGET;
+	} 
+	
+	
+    function onBodyLoad() {
+    	
+		var paresVarValor = leerGET();
+		Banda = paresVarValor['Banda'];
+		tipo = paresVarValor['tipo'];
+		estilo2 = paresVarValor['estilo2'];
+		estilo3 = paresVarValor['estilo3'];
+		obtenerDatos();
+    }
+    
 	function addNewRow()
 	{
 	  // obtenemos acceso a la tabla por su ID
@@ -34,29 +65,22 @@
 	 
 	  // y lo asignamos a la celda
 	  newCell.innerHTML = landmark;
+	  newRow.idName=name;
+	  newRow.onclick=function(){Cargar_Banda(newRow.idName);}
 	 
 	  // aviso ;)
 	  //alert(txt)
 	}
 
+	function Cargar_Banda(x){
+        window.open("file:///android_asset/www/html/banda.html?Banda="+x);		
+	}
+	
     function obtenerDatos() {
-        //valor=document.getElementById("dato").value;
-        
-        //if (document.getElementById("Estilo").checked){
-       	// var tipo=document.getElementById("Estilo").value;
-        //}
-        //else if (document.getElementById("Ciudad").checked){
-       	// var tipo=document.getElementById("Ciudad").value;
-        //}
-        //else {
-       	// var tipo=document.getElementById("Cercania").value;
-        //}
-        
-		
-        //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://192.168.1.101/banda_nombre.php',
+            //url: 'http://192.168.1.101/banda_nombre.php',
+            url: 'http://158.42.77.207/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -64,6 +88,7 @@
             success: function(data/*, status*/){
                 $.each(data, function(i,item){
                     landmark = '<h2>'+item.name+'</h2>';
+                    name=item.name;
                     addNewRow();
                 });
                 //mostrardatos();
@@ -90,11 +115,11 @@
 </script>
 
 </head>
-<body>
+<body onload="onBodyLoad()">
 
  	 <div id="base">
 	  
-	 	<h1 style="height:30px;">Actualizaciones de bandas<button style="height:30px; display:inline;"  onclick="obtenerDatos()"></button></h1>
+	 	<h1 style="height:30px;">Actualizaciones de bandas</h1>
 
 	 	<div id="resul">
 	 	  	<TABLE align="center" id="bandas">

@@ -14,6 +14,19 @@ and open the template in the editor.
 	
 		<script>
 		var $resultados;
+		var $banda;
+		var var_ciudad;
+		var var_estilo="";
+		
+	    function onBodyLoad() {
+	    	
+			var paresVarValor = leerGET();
+			banda = paresVarValor['Banda'];
+			//mostrardatos();
+			obtenerCiudad();
+			obtenerEstilo();
+			//mostrardatos();
+	    }
 		
 		function leerGET(){
  		    var cadGET = location.search.substr(1,location.search.length);
@@ -33,13 +46,10 @@ and open the template in the editor.
 		
 		function obtenerDatos() {
 			
-			var paresVarValor = leerGET();
-			var valor = paresVarValor['Banda'];
-			
-		    resultados = $('#info');
+		    //resultados = $('#info');
 		    
 		    $.ajax({
-		        url: 'http://192.168.1.102/banda_informacion.php?banda='+valor,
+		        url: 'http://192.168.1.102/banda_informacion.php?banda='+banda,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
@@ -47,10 +57,56 @@ and open the template in the editor.
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
 			                var landmark = '<h1>'+item.bio+'</h1>';
-			                alert(landmark);
 			                resultados.append(landmark);
 			            });
 			            mostrardatos();
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+		
+		function obtenerCiudad() {
+
+		    //resultados = $('#info');
+		    
+		    $.ajax({
+	            url: 'http://158.42.77.207/banda_ciudad.php?busqueda='+banda,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                var_ciudad = '<h2>'+item.location+'</h2>';
+			            });
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+		
+		function obtenerEstilo() {
+			alert("ENTRO");
+		    //resultados = $('#info');
+		    
+		    $.ajax({
+	            url: 'http://158.42.77.207/banda_estilo.php?busqueda='+banda,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                //var landmark = '<h1>'+item.name+'</h1>';
+			                //alert(landmark);
+			                //resultados.append(landmark);
+			                var_estilo+= '<h2>'+item.name, +'</h2>';
+			                //resultados.append(var_estilo);
+			            });
+						mostrardatos();
 			        },
 			        error: function(){
 			            alert('no va');
@@ -68,8 +124,11 @@ and open the template in the editor.
 			}
 			
 			function mostrardatos() {
-			    $('#info').html($resultados);
-			    $.mobile.pageLoading(true);
+			    //$('#info').html($resultados);
+			    $('#BANDA_nombre').html(banda);
+			    $('#BANDA_ciudad').html(var_ciudad);
+			    $('#BANDA_estilo').html(var_estilo);
+			    //$.mobile.pageLoading(true);
 			}
 
 		</script>
@@ -77,14 +136,14 @@ and open the template in the editor.
 		
 	</head>
 
-	<body> <!--onload="obtenerDatos()"-->
+	<body onload="onBodyLoad()">
 		<FORM id="form" METHOD=GET>
 			 
 			 <div id="base">
 			 
 			  		<TABLE table align="center" id="Busqueda">
 						<TR>
-  							<TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD>
+  							<TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;"><span id="BANDA_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1></TD>
 						</TR> 
 					</TABLE>
 				<div id="resul">
@@ -92,11 +151,10 @@ and open the template in the editor.
 	 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
 	 			
 	 				<div id="datos">
-		 				<h2 align="left">Ciudad:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->
-		 				<h2 align="left">Componentes:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-		 				<h2 align="left">Estilo:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-		 				<h2 align="left">Sello:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-		 				
+		 				<h2 align="left">Ciudad: </h2> <span id="BANDA_ciudad" type="text" name="ciudad" style="color: white; display:inline"></span>
+		 				<h2 align="left">Componentes:</h2> 
+		 				<h2 align="left">Estilo: </h2> <span id="BANDA_estilo" type="text" name="ciudad" style="color: white; display:inline"></span>
+		 				<h2 align="left">Sello:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->			 				
 		 			</div>	
 		 			<HR>
 		 			

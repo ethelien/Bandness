@@ -65,44 +65,6 @@ and open the template in the editor.
 		div3.style.display = "none";
 
 	}
-		
-    function obtenerDatos() {
-        valor=document.getElementById("dato").value;
-        
-        if (document.getElementById("Estilo").checked){
-       	 var tipo=document.getElementById("Estilo").value;
-        }
-        else if (document.getElementById("Ciudad").checked){
-       	 var tipo=document.getElementById("Ciudad").value;
-        }
-        else {
-       	 var tipo=document.getElementById("Cercania").value;
-        }
-        
-		
-		alert(valor);
-		
-        resultados = $('#resulta');
-        
-        $.ajax({
-            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
-            dataType: 'jsonp',
-            jsonp: 'jsoncallback',
-            type:'get',
-            timeout: 5000,
-            success: function(data/*, status*/){
-                $.each(data, function(i,item){
-                    var landmark = '<h1>'+item.bio+'</h1>';
-                    alert(landmark);
-                    resultados.append(landmark);
-                });
-                mostrardatos();
-            },
-            error: function(){
-                alert('no va');
-            }
-        });
-    }
     
     function mostrardatos() {
         $('#resulta').html($resultados);
@@ -110,7 +72,7 @@ and open the template in the editor.
     }
     
     function continuar(){
-        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor+"&tipo="+tipo);
         window.open("file:///android_asset/www/html/bandas.html");
 	}
 	
@@ -121,6 +83,20 @@ and open the template in the editor.
 	function zonaeventos(){
         window.open("file:///android_asset/www/html/evento.html");
 	}
+	
+	function buscarCiudad(){
+		var tipo="CI";
+        valor=document.getElementById("Ciudad").value;
+        window.open("file:///android_asset/www/html/bandas.html?Banda="+valor+"&tipo="+tipo);	
+    }
+	
+	function buscarEstilo(){
+		var tipo="ES";
+        valor=document.getElementById("Estilo1").value;
+        estilo2=document.getElementById("Estilo2").value;
+        estilo3=document.getElementById("Estilo3").value;
+        window.open("file:///android_asset/www/html/bandas.html?Banda="+valor+"&estilo2="+estilo2+"&estilo3="+estilo3+"&tipo="+tipo);	
+    }
 		
 </script>
 
@@ -181,7 +157,7 @@ and open the template in the editor.
 		      				<TD><input type="text" id="Estilo3" name="Es3" value="" style="display: inline;"/> </TD>
 						</TR> 
 						<TR>
-		      				<TD><input TYPE="button" id="Dale_caña" value="¡Dale caña!" style="width:70%; height:100%;" onclick="buscar()"></TD>
+		      				<TD><input TYPE="button" id="Dale_caña" value="¡Dale caña!" style="width:70%; height:100%;" onclick="buscarEstilo()"></TD>
 						</TR>
 					</TABLE>				
 		 	</div> 
@@ -196,7 +172,7 @@ and open the template in the editor.
 		      				<TD><input type="text" id="Ciudad" name="Ciu" value="" style="display: inline;"/> </TD>
 						</TR> 
 						<TR>
-		      				<TD><input TYPE="button" id="Dale_caña" value="¡Dale caña!" style="width:70%; height:100%;" onclick="buscar()"></TD>
+		      				<TD><input TYPE="button" id="Dale_caña" value="¡Dale caña!" style="width:70%; height:100%;" onclick="buscarCiudad()"></TD>
 						</TR>
 					</TABLE>				
 		 	</div> 

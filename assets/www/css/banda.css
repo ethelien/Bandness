@@ -48,7 +48,7 @@ body {
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
-    height: 85%;
+    height: 80%;
     width: 100%;
 }
 
@@ -126,7 +126,7 @@ h1 {
     color: white;
     display: inline-block;
     font-family: Tahoma;
-    font-size: large;
+    font-size: x-large;
     font-weight: bolder;
     height: 5%;
     width: 100%;
