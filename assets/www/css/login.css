@@ -49,17 +49,35 @@ body {
 	left: 0px;
 	bottom: 0px;
 	width: 100%;
-	height: 40%;
+	height: 50%;
 	overflow: hidden;
 }
 
 #zona input{
-	background-color:#FFFFFF; 
-	border-radius: 5px; 
-	border-color:#111111;
+	background-color:#FFFFFF;  
 	color:black;
 	height: 100%;
     width: 90%;
+}
+
+.Corr{
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+	background-position: -508px -336px;
+	border: none;
+	width: 20px;
+	height: 20px;
+}
+
+.Wrong{
+	background-color: transparent;
+    background-image:url("../img/spirtebandnessmovil_40.png");
+	background-repeat: no-repeat;
+	background-position: -508px -371px;
+	border: none;
+	width: 20px;
+	height: 20px;
 }
 
 h1{
@@ -67,6 +85,18 @@ h1{
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: medium;
     color: black;
+}
+
+h2{
+    font-family: Tahoma, "Times New Roman", Times, serif;
+    font-size: small;
+    color: green;
+}
+
+h3{
+    font-family: Tahoma, "Times New Roman", Times, serif;
+    font-size: small;
+    color: red;
 }
 
 button {

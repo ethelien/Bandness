@@ -61,6 +61,14 @@ body {
 	font-weight: bold;
 }
 
+.nombres{
+	width: 70%;
+}
+
+.logo{
+	width: 30%;
+}
+
 h1 {
     color: white;
     display: inline-block;

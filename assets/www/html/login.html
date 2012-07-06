@@ -14,6 +14,7 @@ and open the template in the editor.
 	
 		<script>
 		var $resultados;
+		var user_id;
 		
 		function leerGET(){
  		    var cadGET = location.search.substr(1,location.search.length);
@@ -30,27 +31,68 @@ and open the template in the editor.
  		 return asocGET;
 		} 
 		
+	    function Login(){
+
+	        var user_corr = document.getElementById('User_corr');
+	        var user_wrong = document.getElementById('User_wrong');
+	        var pass_corr = document.getElementById('Pass_corr');
+	        var pass_wrong = document.getElementById('Pass_wrong');
+	        var user_corr_text = document.getElementById('User_corr_text');
+	        var user_wrong_text = document.getElementById('User_wrong_text');
+	        var pass_corr_text = document.getElementById('Pass_corr_text');
+	        var pass_wrong_text = document.getElementById('Pass_wrong_text');
+	        
+	        if(user_id==""){
+	        	user_wrong.style.display='inline';
+	        	user_wrong_text.style.display='inline';
+	        	user_corr.style.display='none';
+	        	user_corr_text.style.display='none';
+	        }
+	        
+	        else{
+	        	user_wrong.style.display='none';
+	        	user_wrong_text.style.display='none';
+	        	user_corr.style.display='inline'; 
+	        	user_corr_text.style.display='inline';     	
+	        }
+	        
+	       // if(div.style.display == 'none'){
+	       // 	div.style.display = 'inline';
+	       // 	div2.style.display = 'none';
+
+	       //     $('#quantity').val(parseInt($('#quantity').val()) - 1); 	
+	       // }
+	        
+	       //  else{
+	       // 	div.style.display = 'none';
+	       // 	div2.style.display = 'inline';
+	        	
+	       //     $('#quantity').val(parseInt($('#quantity').val()) + 1); 	
+
+	        
+	        //}
+	        
+	    }
+		
 		
 		function obtenerDatos() {
 			
-			var paresVarValor = leerGET();
-			var valor = paresVarValor['Banda'];
+			valor=document.getElementById("N").value;
 			
-		    resultados = $('#info');
+		    //resultados = $('#info');
 		    
 		    $.ajax({
-		        url: 'http://192.168.1.102/banda_informacion.php?banda='+valor,
+		        url: 'http://158.42.77.207/bandee_nick.php?busqueda='+valor,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
-			                var landmark = '<h1>'+item.bio+'</h1>';
-			                alert(landmark);
-			                resultados.append(landmark);
+			                user_id = item.user_id;
+			                alert(user_id);
 			            });
-			            mostrardatos();
+			            Login();
 			        },
 			        error: function(){
 			            alert('no va');
@@ -88,17 +130,27 @@ and open the template in the editor.
 	            <TABLE align="center" id="zona" cellspacing="10">
 					 <TR>
 						<TD align="right"><H1 style="display: inline;">User</H1></TD> 
-						<TD align="left"> <input type="text" id="N" name="Nombre" value=""/> </TD>
+						<TD align="left"><input type="text" id="N" name="Nombre" value="" style="border-color:#111111; border-radius: 5px;"/> </TD>
 					 </TR> 
 					 <TR>
-						<TD align="center" colspan="2"><H1 style="display: inline;">MENSAJE_ USUARIO</H1></TD> 
+						<TD align="center" colspan="2">
+							<img class="Corr" style="display: none;" id="User_corr"></img>
+							<img class="Wrong" style="display: none;" id="User_wrong"></img>
+							<H2 style="display: none;" id="User_corr_text"> usuario correcto</H2>
+							<H3 style="display: none;" id="User_wrong_text"> usuario incorrecto</H3>
+						</TD> 
 					 </TR> 
 					 <TR>
 						 <TD align="right";> <H1 style="display: inline;">Pass</H1></TD> 
-						 <TD align="left"> <input type="password" name="Password" value=""/></TD>
+						 <TD align="left"> <a id="pass"></a> <input type="password" name="Password" value="" style="border-color:#111111; border-radius: 5px;"/></TD>
 					</TR>
 					<TR>
-						<TD align="center" colspan="2"><H1 style="display: inline;">MENSAJE_ PASSWORD</H1></TD> 
+						<TD align="center" colspan="2">
+							<img class="Corr" style="display: none;" id="Pass_corr"></img>
+							<img class="Wrong" style="display: none;" id="Pass_wrong"></img>
+							<H2 style="display: none;" id="Pass_corr_text"> password correcto</H2>
+							<H3 style="display: none;" id="User_wrong_text"> password incorrecto</H3>
+						</TD> 
 					 </TR> 
 				</TABLE>
 			

@@ -85,6 +85,7 @@ body {
     z-index: 100;
 }
 #zona input {
+	font-size: small;
     background-color: #404448;
     border: medium none;
     box-shadow: 0 0 3px #FFFFFF inset;

@@ -14,6 +14,7 @@
     var $estilo2;
     var $estilo3;
     var $name;
+    var $id;
 
 	var numero = 0;
 	var landmark;
@@ -56,16 +57,16 @@
 	  var newRow = TABLE.insertRow(-1);
 	  newRow.className = TROW.attributes['class'].value;
 	  // creamos una nueva celda
-	  var newCell = newRow.insertCell(newRow.cells.length)
-	  // creamos una nueva ID para el examinador
-	  //newID = 'file_' + (++numero);
-	 
-	  // creamos un nuevo control
-	  //txt = '<input type="file" id="' + newID  + '" size="50" />'
+	  var newCell = newRow.insertCell(newRow.cells.length);
+	  var newCell2 = newRow.insertCell(newRow.cells.length);
+
+	  newCell.className = "nombres";
+	  newCell2.className = "logo";
 	 
 	  // y lo asignamos a la celda
 	  newCell.innerHTML = landmark;
-	  newRow.idName=name;
+	  newCell2.innerHTML = "PROBANDO";
+	  newRow.idName=id;
 	  newRow.onclick=function(){Cargar_Banda(newRow.idName);}
 	 
 	  // aviso ;)
@@ -89,6 +90,7 @@
                 $.each(data, function(i,item){
                     landmark = '<h2>'+item.name+'</h2>';
                     name=item.name;
+                    id=item.id;
                     addNewRow();
                 });
                 //mostrardatos();
