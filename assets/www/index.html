@@ -8,13 +8,20 @@ and open the template in the editor.
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/index.css">
-<script type='text/javascript' src='js/phonegap-1.2.0.js'></script>
-<script src="js/jquery-1.5.2.min.js"></script>
-<script src="js/jquery.jsonp-2.2.1.js"></script>
-<script>
+<script type='text/javascript' src='js/cordova-1.5.0.js'></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.jsonp-2.2.1.js"></script><script>
     var $resultados;
     var $valor;
-       
+    var linkLocation;
+    
+    $(document).ready(function() {
+        $("body").css("display", "none");
+  	    $("body").fadeIn('fast');
+    
+        document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
+    });
+      
 	function mostrarEstilos() {
 
 		div = document.getElementById('resul');
@@ -72,22 +79,28 @@ and open the template in the editor.
     }
     
     function continuar(){
-        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor+"&tipo="+tipo);
-        window.open("file:///android_asset/www/html/bandas.html");
-	}
+	    event.preventDefault();
+        linkLocation = "html/bandas.html";
+        $("body").fadeOut('slow',redirectPage);     
+	}	
 	
 	function zonaprivada(){
-        window.open("file:///android_asset/www/html/login.html");
+		event.preventDefault();
+        linkLocation = "html/login.html";
+        $("body").fadeOut('slow',redirectPage);     
 	}
 	
 	function zonaeventos(){
-        window.open("file:///android_asset/www/html/evento.html");
+		event.preventDefault();
+        linkLocation = "html/evento.html";
+        $("body").fadeOut('slow',redirectPage);     
 	}
 	
 	function buscarCiudad(){
 		var tipo="CI";
         valor=document.getElementById("Ciudad").value;
-        window.open("file:///android_asset/www/html/bandas.html?Banda="+valor+"&tipo="+tipo);	
+        linkLocation = "html/bandas.html?Banda="+valor+"&tipo="+tipo;
+        $("body").fadeOut('slow',redirectPage);     	
     }
 	
 	function buscarEstilo(){
@@ -95,8 +108,14 @@ and open the template in the editor.
         valor=document.getElementById("Estilo1").value;
         estilo2=document.getElementById("Estilo2").value;
         estilo3=document.getElementById("Estilo3").value;
-        window.open("file:///android_asset/www/html/bandas.html?Banda="+valor+"&estilo2="+estilo2+"&estilo3="+estilo3+"&tipo="+tipo);	
+        linkLocation = "html/bandas.html?Banda="+valor+"&estilo2="+estilo2+"&estilo3="+estilo3+"&tipo="+tipo;	
+        $("body").fadeOut('slow',redirectPage);     
     }
+    
+    function redirectPage() {
+		window.location = linkLocation;
+	}
+		
 		
 </script>
 
@@ -142,19 +161,19 @@ and open the template in the editor.
 		        
 		 			<TABLE id="tabla">
 		 				<TR>
-		 					<TD><H1 style="display: inline; text-align: left">Estilo 1:</H1></TD>
+		 					<TD><H1 style="display: inline; color:black;">Estilo 1:</H1></TD>
 						<TR>
-		      				<TD><input type="text" id="Estilo1" name="Es1" value="" style="display: inline;"/> </TD>
+		      				<TD><input type="text" id="Estilo1" name="Es1" value="" placeholder="Estilo..." style="display: inline;"/> </TD>
 						</TR> 
 		 				<TR>
-		 					<TD><H1 style="display: inline;">Estilo 2:</H1></TD>
+		 					<TD><H1 style="display: inline; color:black;">Estilo 2:</H1></TD>
 						<TR>
-		      				<TD><input type="text" id="Estilo2" name="Es2" value="" style="display: inline;"/> </TD>
+		      				<TD><input type="text" id="Estilo2" name="Es2" value="" placeholder="Estilo..." style="display: inline;"/> </TD>
 						</TR> 
 						<TR>
-		 					<TD><H1 style="display: inline;">Estilo 3:</H1></TD>
+		 					<TD><H1 style="display: inline; color:black;">Estilo 3:</H1></TD>
 						<TR>
-		      				<TD><input type="text" id="Estilo3" name="Es3" value="" style="display: inline;"/> </TD>
+		      				<TD><input type="text" id="Estilo3" name="Es3" value="" placeholder="Estilo..." style="display: inline;"/> </TD>
 						</TR> 
 						<TR>
 		      				<TD><input TYPE="button" id="Dale_caña" value="¡Dale caña!" style="width:70%; height:100%;" onclick="buscarEstilo()"></TD>
@@ -166,7 +185,7 @@ and open the template in the editor.
 		 			
 		 			<TABLE id="tabla">
 		 				<TR>
-		 					<TD><H1 style="display: inline; text-align: left">Ciudad:</H1></TD>
+		 					<TD><H1 style="display: inline; color:black;">Ciudad:</H1></TD>
 						</TR>
 						<TR>
 		      				<TD><input type="text" id="Ciudad" name="Ciu" value="" autocomplete="off" placeholder="Ciudad..." style="display: inline;"/> </TD>
@@ -181,7 +200,7 @@ and open the template in the editor.
 		 			
 		 			<TABLE id="tabla">
 		 				<TR>
-		 					<TD><H1 style="display: inline; text-align: left">Resultados</H1></TD>
+		 					<TD><H1 style="display: inline; color:black;">Resultados</H1></TD>
 						</TR>
 						<TR>
 		      				<TD><input type="text" id="Ciudad" name="Ciu" value="" style="display: inline;"/> </TD>
@@ -195,31 +214,16 @@ and open the template in the editor.
 		 	
 		 	
 		 	<div id="zona">
-		        <INPUT TYPE="button" style="width:50%; height:100%;" onclick="zonaprivada()">
+		        <INPUT TYPE="button" id="Entrada_Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
 		        <INPUT TYPE="button" value="Bandas actualizadas" style="width:50%; height:100%;" onclick="continuar()">
 		    </div>
 		    
-		    <div id="zona2">
-		        <INPUT TYPE="button" id="Entrada_Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
-		    </div>
-		 	
-		    
-		 
+		 			 
 		 </div> 
 	
 		 
 	
 	</FORM> 
     
-    
-   <!-- <div data-role="content" class="content" id="contenido">
-    <strong>RESULTADOS: </strong> 
-    <br /><br />
-    <span id="resultados"></span>
-    <br /><br />
-</div>  -->
 </body>
- <!--<body onload="obtenerDatos()">
-    <div id="resultados"></div>
-</body>-->
 </html>

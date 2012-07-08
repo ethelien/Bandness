@@ -1,9 +1,7 @@
 package bandness.proyecto;
 
-import org.apache.cordova.DroidGap;
-
+import org.apache.cordova.*;
 import android.os.Bundle;
-import com.phonegap.*;
 
 public class MainActivity extends DroidGap
 {
