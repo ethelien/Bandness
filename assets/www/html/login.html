@@ -15,6 +15,13 @@ and open the template in the editor.
 		<script>
 		var $resultados;
 		var user_id;
+		var pass;
+		
+		$(document).ready(function() {
+        	$("body").css("display", "none");
+  	    	$("body").fadeIn('slow');
+    
+   	    });
 		
 		function leerGET(){
  		    var cadGET = location.search.substr(1,location.search.length);
@@ -30,6 +37,8 @@ and open the template in the editor.
   			}
  		 return asocGET;
 		} 
+		
+		//FALTA PROBAR LOGIN CON EL PASS (EL DE AHORA ES MUY MUY LARGO)
 		
 	    function Login(){
 
@@ -47,35 +56,31 @@ and open the template in the editor.
 	        	user_wrong_text.style.display='inline';
 	        	user_corr.style.display='none';
 	        	user_corr_text.style.display='none';
+	        	pass_wrong.style.display='inline';
+	        	pass_wrong_text.style.display='inline';
+	        	pass_corr.style.display='none';
+	        	pass_corr_text.style.display='none';
 	        }
 	        
-	        else{
+	        else if(user_id==pass){
+	        	entrar();  	
+	        }
+	        
+	       else if(user_id!=pass && user_id!="FALSE"){
 	        	user_wrong.style.display='none';
 	        	user_wrong_text.style.display='none';
 	        	user_corr.style.display='inline'; 
-	        	user_corr_text.style.display='inline';     	
+	        	user_corr_text.style.display='inline'; 
+	        	pass_wrong.style.display='inline';
+	        	pass_wrong_text.style.display='inline';
+	        	pass_corr.style.display='none';
+	        	pass_corr_text.style.display='none';    	
 	        }
-	        
-	       // if(div.style.display == 'none'){
-	       // 	div.style.display = 'inline';
-	       // 	div2.style.display = 'none';
-
-	       //     $('#quantity').val(parseInt($('#quantity').val()) - 1); 	
-	       // }
-	        
-	       //  else{
-	       // 	div.style.display = 'none';
-	       // 	div2.style.display = 'inline';
-	        	
-	       //     $('#quantity').val(parseInt($('#quantity').val()) + 1); 	
-
-	        
-	        //}
 	        
 	    }
 		
 		
-		function obtenerDatos() {
+		function validarNick() {
 			
 			valor=document.getElementById("N").value;
 			
@@ -91,6 +96,31 @@ and open the template in the editor.
 			            $.each(data, function(i,item){
 			                user_id = item.user_id;
 			                alert(user_id);
+			            });
+			            validarPass();
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+			
+		function validarPass() {
+			
+			valor=document.getElementById("N").value;
+			
+		    //resultados = $('#info');
+		    
+		    $.ajax({
+		        url: 'http://158.42.77.207/bandee_nick.php?busqueda='+valor,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                pass = item.id;
+			                alert(pass);
 			            });
 			            Login();
 			        },
@@ -110,7 +140,12 @@ and open the template in the editor.
 			}
 			
 			function entrar(){
-       		 	window.open("file:///android_asset/www/html/menu.html");
+			    linkLocation = "html/menu.html";
+       			 $("body").fadeOut('slow',redirectPage);   
+			}
+			
+			function redirectPage() {
+				window.location = linkLocation;
 			}
 
 		</script>
