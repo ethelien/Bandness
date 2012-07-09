@@ -51,15 +51,14 @@ body {
 	background-position: -410px -770px;
 }
 
-#Busqueda input {
-    border: medium none;
-    color: white;
+img {
+	border: none;
 	background-color: transparent;
     background-image:url("../img/spirtebandnessmovil_60.png");
 	background-repeat: no-repeat;
 	text-align: center;
-	border: none;
 	}
+
 
 #Fila{
 	border-bottom-style: solid; 

@@ -50,6 +50,7 @@
 		tipo = paresVarValor['tipo'];
 		estilo2 = paresVarValor['estilo2'];
 		estilo3 = paresVarValor['estilo3'];
+
 		obtenerDatos();
 		
     }
@@ -90,7 +91,7 @@
         
         $.ajax({
             //url: 'http://192.168.1.101/banda_nombre.php',
-            url: 'http://192.168.1.101/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
+            url: 'http://158.42.76.235/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
