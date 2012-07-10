@@ -9,6 +9,12 @@
 <script>
     var $resultados;
     var $valor;
+    
+    $(document).ready(function() {
+        $("body").css("display", "none");
+  	    $("body").fadeIn('slow');
+    
+   });
 
     function obtenerDatos() {
         valor=document.getElementById("dato").value;
@@ -74,22 +80,26 @@
 </script>
 
 </head>
-<body onload="$.mobile.pageLoading();">
+<body>
 
 		<div id="base">
 		 
 	  		<TABLE align="center" id="Busqueda" cellspacing="0">
 				<TR onclick="conciertos()">
-	  				<TD id="Fila" align="center" style="width:60%;" ><H1 style="display: inline;">Eventos</H1></TD><TD id="Fila" align="center" style="width:40%;"><img id="Eventos" style="width:120px; height:120px; display: inline;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" ><H1 style="display: inline;">Eventos</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR>
 				<TR >
-	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD><TD id="Fila" align="center" style="width:40%;"><img id="Bandas" style="width:120px; height:120px; display: inline;"></img> </TD> 
+	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Bandas" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR> 
 				<TR >
-	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD><TD id="Fila" align="center" style="width:40%;"><img id="Diario" style="width:120px; height:120px; display: inline;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Diario" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR> 
 				<TR >
-	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD><TD id="Fila" align="center" style="width:40%;"><img id="Config" style="width:120px; height:120px; display: inline;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Config" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR>  
 			</TABLE>
 			

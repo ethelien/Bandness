@@ -7,26 +7,27 @@
 <script type='text/javascript' src='js/cordova-1.5.0.js'></script>
 <script src="../js/jquery-1.7.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
-
-<style type="text/css">
-
-
-#confirmar{
-	background: -814px -150px;
-	display:inline;
-}
-
-#confirmado{
-	background: -813px -207px;
-	display:none;
-}
-
-</style>
-
-
 <script>
     var $resultados;
     var $valor;
+    var var_nombre;
+    var var_description;
+    var var_fecha;
+    var var_precio;
+    var var_asistentes;
+    
+		$(document).ready('load', function(){
+   			$("#cover").show('fast');
+		});
+    
+	    function onBodyLoad() {
+	    	
+			//var paresVarValor = leerGET();
+			//id = paresVarValor['Banda'];
+			//mostrardatos();
+			obtenerDatos();
+			//mostrardatos();
+	    }
       
     function cambiar(){
 
@@ -53,34 +54,55 @@
     }
         
     function obtenerDatos() {
-        valor=document.getElementById("dato").value;
-        
-        if (document.getElementById("Estilo").checked){
-       	 var tipo=document.getElementById("Estilo").value;
-        }
-        else if (document.getElementById("Ciudad").checked){
-       	 var tipo=document.getElementById("Ciudad").value;
-        }
-        else {
-       	 var tipo=document.getElementById("Cercania").value;
-        }
-        
+      		
+		//alert(valor);
+		valor=38; // SIMPLEMENTE PARA PROBAR 
 		
-		alert(valor);
-		
-        resultados = $('#resulta');
+        //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            url: 'http://192.168.1.100/evento_info.php?evento='+valor,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
             timeout: 5000,
             success: function(data/*, status*/){
                 $.each(data, function(i,item){
-                    var landmark = '<h1>'+item.bio+'</h1>';
-                    alert(landmark);
-                    resultados.append(landmark);
+                    //var landmark = '<h1>'+item.bio+'</h1>';
+                    //alert(landmark);
+                    //resultados.append(landmark);
+                   var_nombre = item.name;
+                   var_description = item.description;
+                   var_fecha = item.date_init;  
+                   var_precio = item.price;                  
+                });
+                obtenerAsistentes();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
+    
+    function obtenerAsistentes() {
+      		
+		//alert(valor);
+		valor=38; // SIMPLEMENTE PARA PROBAR 
+		
+        //resultados = $('#resulta');
+        
+        $.ajax({
+            url: 'http://192.168.1.100/evento_asistencia.php?evento='+valor,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){
+                    //var landmark = '<h1>'+item.bio+'</h1>';
+                    //alert(landmark);
+                    //resultados.append(landmark);
+                   var_asistentes = item.attendance;       
                 });
                 mostrardatos();
             },
@@ -91,8 +113,16 @@
     }
     
     function mostrardatos() {
-        $('#resulta').html($resultados);
-        $.mobile.pageLoading(true);
+        //$('#resulta').html($resultados);
+        $('#EVENTO_nombre').html(var_nombre);
+		$('#EVENTO_hora').html(var_fecha);
+		$('#EVENTO_descripcion').html(var_description);
+		//$('#BANDA_sello').html(var_sello);
+		$('#EVENTO_precio').html(var_precio);
+		$('#quantity').val(var_asistentes);
+       // $.mobile.pageLoading(true);
+        $("#cover").fadeOut('fast');
+		$("#base").fadeIn('1000');
     }
     
     function continuar(){
@@ -107,33 +137,69 @@
 </script>
 
 </head>
-<body onload="$.mobile.pageLoading();">
+<body onload="onBodyLoad()">
 
 
+		<div id="cover"> LOADING... </div>
+		
 		<div id="base">
 		 
 	  		<TABLE align="center" id="Busqueda">
 				<TR>
-	  				<TD align="center" style="width:30%;"><INPUT TYPE="button" id="fecha_evento" style="width:72px; height:72px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;">ESTO LUEGO SERA PARAMETRO</H1></TD>
+	  				<TD align="center" style="width:30%;">
+	  					<INPUT TYPE="button" id="fecha_evento" style="width:72px; height:72px; display: inline;"> 
+	  				</TD> 
+	  				<TD align="center" style="width:70%;">
+	  					<H1 style="display: inline;">
+	  					<span id="EVENTO_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1>
+	  				</TD>
 				</TR> 
 			</TABLE>
 			<div id="resul">
-        	<!--  <span id="resulta" rows="5" type="text" name="banda" style="width:98%; background-color:transparent; border: none; resize: none; color:black"  onclick="continuar()"></span> -->
- 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
 	 			<HR>
-		 		<div id="datos">
-	 				<h2 align="left">Hora:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->
-	 				<h2 align="left">Nombre de la sala:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-	 				<h2 align="left">Lugar:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-	 				<h2 align="left">Precio:</h2> <!--  <span id="resulta" type="text" name="ciudad"></span> -->	
-	 				<BR><BR>	
-	 				<h3 align="left">Aqui cargaremos los comentarios</h3> <!--  <span id="resulta" type="text" name="ciudad"></span> -->
-	 						
-				</div>	
+		 		<TABLE id="datos">
+		 			<TR>
+		 				<TD align="left" style="vertical-align:text-top">
+		 					<h2 align="left">Hora: </h2> 
+		 				</TD>
+			 			<TD align="left" style="vertical-align:text-top">
+			 				<h2><span id="EVENTO_hora" type="text" name="hora" style="color: white; display:inline"></span></h2>
+			 			</TD>
+			 		</TR>	
+			 		<TR>	
+			 			<TD align="left" style="vertical-align:text-top">
+		 					<h2 align="left">Sala: </h2> 
+		 				</TD>
+			 			<TD align="left" style="vertical-align:text-top">
+			 				<h2><span id="EVENTO_sala" type="text" name="sala" style="color: white; display:inline"></span></h2>
+			 			</TD>
+			 		</TR>
+			 		<TR>	
+			 			<TD align="left" style="vertical-align:text-top">
+		 					<h2 align="left">Lugar: </h2> 
+		 				</TD>
+			 			<TD align="left" style="vertical-align:text-top">
+			 				<h2><span id="EVENTO_lugar" type="text" name="lugar" style="color: white; display:inline"></span></h2>
+			 			</TD>
+			 		</TR>
+			 		<TR>
+			 			<TD align="left" style="vertical-align:text-top">
+		 					<h2 align="left">Precio: </h2> 
+		 				</TD>
+			 			<TD align="left" style="vertical-align:text-top">
+			 				<h2><span id="EVENTO_precio" type="text" name="precio" style="color: white; display:inline"></span></h2>
+			 			</TD>
+		 			</TR>
+			 	 	<TR>		
+			 	 		<TD align="left" style="vertical-align:text-top; padding-top:10px;" colspan="2">	
+		 					<h3 align="left"><span id="EVENTO_descripcion" type="text" name="descripcion"></span></h3>
+		 				</TD>
+	 				</TR>
+				</TABLE>	
 				
 				<TABLE align="center" id="botones">
 					<TR>
-		  				<TD align="center" style="width:25%;"><input name="quantity" id="quantity" value="0" size="3" style="color:white; background-image:none;"></TD>
+		  				<TD align="center" style="width:25%;"><INPUT name="quantity" id="quantity" size="3" style="color:white; background-image:none;"></TD>
 		  			    <TD align="center" style="width:25%;"><INPUT TYPE="button" id="mapa" style="width:50px; height:50px; display: inline;"> </TD>
 		  			    <TD align="center" style="width:30%;"><INPUT TYPE="button" id="confirmar" style="width:100px; height:50px"  onclick="cambiar()"> <INPUT TYPE="button" id="confirmado" style="width:100px; height:50px"  onclick="cambiar()"> </TD>
 					</TR> 
@@ -142,16 +208,14 @@
  			</div> 	
 				
 				
-			<div id="zona">
-		        <INPUT TYPE="button" style="width:50%; height:100%;" onclick="zonaprivada()">
-		        <INPUT TYPE="button" value="Bandas" style="width:50%; height:100%;" onclick="continuar()">
-  			</div>
-  			
-  			<div id="zona2">
+		 	<div id="zona">
 		        <INPUT TYPE="button" id="Entrada_Bandness" style="width:50%; height:100%;" onclick="zonaprivada()">
-		   	</div>
+		        <INPUT TYPE="button" value="Bandas actualizadas" style="width:50%; height:100%;" onclick="continuar()">
+		    </div>
 
 	 	</div>	
+	 	
+	 	</div>
 
 </body>
 

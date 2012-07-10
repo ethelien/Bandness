@@ -32,6 +32,15 @@ body {
     text-align: center;
 }
 
+#cover {
+	position: fixed; 
+	height: 100%; 
+	width: 100%; 
+	top:0; 
+	left: 0; 
+	background: #000; 
+	z-index:9999;
+}
 
 #base {
 	margin-top:2%;
@@ -74,12 +83,12 @@ body {
 	padding-top: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
-    width:100%-10px;
+    width:100%-40px;
 }
 
 #botones {
     position: absolute;
-    bottom: 25%;
+    bottom: 15%;
     heigth: 10%;
     width: 90%;
 }
@@ -96,6 +105,17 @@ body {
 	font-size: large;
 }
 
+#confirmar{
+	background: -814px -150px;
+	display:inline;
+}
+
+#confirmado{
+	background: -813px -207px;
+	display:none;
+}
+
+
 #mapa{
 	background-position: -822px -101px;
 
@@ -111,27 +131,18 @@ body {
     width: 100%;
     z-index: 100;
 }
+
 #zona input {
+	font-size: small;
     background-color: #404448;
     border: medium none;
-    box-shadow: 0 0 3px #FFFFFF inset;
+    box-shadow: 0 0 10px #FFFFFF inset;
     color: white;
     float: left;
 }
 
-#zona2 {
-    bottom: 0;
-    display: inline-block;
-    height: 60px;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-}
 
-#zona2 input {
-	font-size: small;
+#Entrada_Bandness{
 	background-color: transparent;
     background-image:url("../img/spirtebandnessmovil_40.png");
 	background-repeat: no-repeat;
@@ -139,16 +150,13 @@ body {
     box-shadow: 0 0 3px #FFFFFF inset;
     color: white;
     float: left;
-}
-
-#Entrada_Bandness{
 	background-position: -20px -250px;
 	text-align: center;
 }
 
 h1 {
     color: white;
-    display: inline-block;
+    display: inline;
     font-family: Tahoma;
     font-size: large;
     font-weight: bolder;
@@ -159,7 +167,7 @@ h1 {
 
 h2 {
 	display: inline-block;
-    color: white;
+    color: gray;
     font-family: Tahoma;
     font-size: small;
     font-weight: bolder;
