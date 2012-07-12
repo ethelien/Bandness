@@ -9,6 +9,12 @@
 <script>
     var $resultados;
     var $valor;
+    
+    $(document).ready(function() {
+        $("body").css("display", "none");
+  	    $("body").fadeIn('slow');
+    
+   });
 
     function obtenerDatos() {
         valor=document.getElementById("dato").value;
@@ -52,47 +58,81 @@
         $('#resulta').html($resultados);
         $.mobile.pageLoading(true);
     }
-    
-    function continuar(){
-        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
+
+	function Geolocalizacion(){
+	      
+        if(document.getElementById('Geolocalizacion').getAttribute("class") == 'Inactivo'){
+        	document.getElementById('Geolocalizacion').setAttribute("class","Activo");
+        }
+        
+        else{
+        	document.getElementById('Geolocalizacion').setAttribute("class","Inactivo");
+        }
+	
 	}
 	
-	function configuracion(){
-        window.open("file:///android_asset/www/html/banda_configuracion.html");
+	function Notificaciones(){
+		
+      if(document.getElementById('Notificaciones').getAttribute("class") == 'Inactivo'){
+        	document.getElementById('Notificaciones').setAttribute("class","Activo");
+        }
+        
+        else{
+        	document.getElementById('Notificaciones').setAttribute("class","Inactivo");
+        }	
 	}
+	function Sesion(){
+	      
+        if(document.getElementById('Sesion').getAttribute("class") == 'Inactivo'){
+        	document.getElementById('Sesion').setAttribute("class","Activo");
+        }
+        
+        else{
+        	document.getElementById('Sesion').setAttribute("class","Inactivo");
+        }
+	
+	}
+	
+	function Eventos(){
+		
+      if(document.getElementById('Eventos').getAttribute("class") == 'Inactivo'){
+        	document.getElementById('Eventos').setAttribute("class","Activo");
+        }
+        
+        else{
+        	document.getElementById('Eventos').setAttribute("class","Inactivo");
+        }	
+	}
+
+	
 	
 </script>
 
 </head>
-<body onload="$.mobile.pageLoading();">
-
- 	<h1>Configuración</h1>
+<body>
 
 		<div id="base">
 		 
-	  		<TABLE align="center" id="Busqueda">
-				<TR>
-	  				<TD align="center" style="width:70%;" onclick="conciertos()"><H1 style="display: inline;">Eventos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+	  		<TABLE align="center" id="Busqueda" cellspacing="0">
+				<TR onclick="Geolocalizacion()">
+	  				<TD id="Fila" align="center" style="width:60%;"><H1 style="display: inline;">Activar geolocalización</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Geolocalizacion" class="Inactivo" style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR>
-				<TR>
-	  				<TD align="center" style="width:70%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				<TR onclick="Notificaciones()">
+	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Activar notificaciones</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Notificaciones" class="Inactivo" style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR> 
-				<TR>
-	  				<TD align="center" style="width:70%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				<TR onclick="Sesion()">
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">No cerrar sesión</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Sesion" class="Inactivo"  style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR> 
-				<TR>
-	  				<TD align="center" style="width:70%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD><TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> 
+				<TR onclick="Eventos()">
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1 style="display: inline;">Compartir eventos</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos" class="Inactivo"  style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR>  
 			</TABLE>
 			
-			<TABLE id="info">
-				<TR>
-	  				<TD align="center" style="width:50%;" onclick="conciertos()"><INPUT TYPE="button" id="Activo" style="display: inline;"> </TD> 
-	  				<TD align="center" style="width:50%;" onclick="conciertos()"><INPUT TYPE="button" id="Inactivo" style="display: inline;"> </TD> 
-				</TR>
-			</TABLE>
-			
-	 	</div>		
+	 	</div>	
 
 </body>
 

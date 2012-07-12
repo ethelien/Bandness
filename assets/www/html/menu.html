@@ -61,21 +61,28 @@
     
     function bandas(){
         //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
-        window.open("file:///android_asset/www/html/bandas.html");
+        linkLocation = "bandas.html";
+        $("body").fadeOut('slow',redirectPage);     	
 	}
 	
 	function configuracion(){
-        window.open("file:///android_asset/www/html/configuracion.html");
+		linkLocation = "banda_configuracion.html";
+        $("body").fadeOut('slow',redirectPage);     	
 	}
 	
 	function conciertos(){
-        window.open("file:///android_asset/www/html/conciertos.html");
+		linkLocation = "conciertos.html";
+        $("body").fadeOut('slow',redirectPage);     	
 	}
 	
 	function diario(){
-        window.open("file:///android_asset/www/html/diario.html");
+		linkLocation = "diario.html";
+        $("body").fadeOut('slow',redirectPage);     	
 	}
 	
+    function redirectPage() {
+		window.location = linkLocation;
+	}
 	
 </script>
 
@@ -89,16 +96,16 @@
 	  				<TD id="Fila" align="center" style="width:60%;" ><H1 style="display: inline;">Eventos</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR>
-				<TR >
+				<TR onclick="conciertos()">
 	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Bandas" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR> 
-				<TR >
+				<TR onclick="diario()">
 	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Diario" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR> 
-				<TR >
-	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1 style="display: inline;">Config</H1></TD>
+				<TR onclick="configuracion()">
+	  				<TD id="Fila" align="center" style="width:60%;"><H1 style="display: inline;">Config</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Config" style="width:120px; height:120px; display: block;"></img> </TD> 
 				</TR>  
 			</TABLE>

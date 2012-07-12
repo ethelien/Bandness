@@ -105,20 +105,17 @@ body {
 	font-size: large;
 }
 
-#confirmar{
+.por_confirmar{
 	background: -814px -150px;
-	display:inline;
 }
 
-#confirmado{
-	background: -813px -207px;
-	display:none;
+.confirmado{
+	background: -814px -207px;
 }
 
 
 #mapa{
-	background-position: -822px -101px;
-
+	background-position: -818px -110px;
 }
 
 #zona {

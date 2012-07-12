@@ -84,7 +84,8 @@
 	}
 
 	function Cargar_Banda(x){
-        window.open("file:///android_asset/www/html/banda.html?Banda="+x);		
+        $("body").fadeOut('slow');     	
+		window.location = "banda.html?Banda="+x;		
 	}
 	
     function obtenerDatos() {
@@ -111,19 +112,7 @@
         });
     }
     
-    function mostrardatos() {
-        $('#resulta').html($resultados);
-        $.mobile.pageLoading(true);
-    }
-    
-    function continuar(){
-        window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
-	}
-	
-	function configuracion(){
-        window.open("file:///android_asset/www/html/banda_configuracion.html");
-	}
-	
+
 </script>
 
 </head>
