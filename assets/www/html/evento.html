@@ -14,6 +14,10 @@
     var var_description;
     var var_fecha;
     var var_precio;
+    var var_sala;
+    var var_location;
+    var var_longitude;
+    var var_latitude;
     var var_asistentes;
     var var_conf="";
     
@@ -61,41 +65,16 @@
             timeout: 5000,
             success: function(data/*, status*/){
                 $.each(data, function(i,item){
-                    //var landmark = '<h1>'+item.bio+'</h1>';
-                    //alert(landmark);
-                    //resultados.append(landmark);
                    var_nombre = item.name;
                    var_description = item.description;
                    var_fecha = item.date_init;  
-                   var_precio = item.price;                  
-                });
-                obtenerAsistentes();
-            },
-            error: function(){
-                alert('no va');
-            }
-        });
-    }
-    
-    function obtenerAsistentes() {
-      		
-		//alert(valor);
-		valor=38; // SIMPLEMENTE PARA PROBAR 
-		
-        //resultados = $('#resulta');
-        
-        $.ajax({
-            url: 'http://158.42.76.235/evento_asistencia.php?evento='+valor,
-            dataType: 'jsonp',
-            jsonp: 'jsoncallback',
-            type:'get',
-            timeout: 5000,
-            success: function(data/*, status*/){
-                $.each(data, function(i,item){
-                    //var landmark = '<h1>'+item.bio+'</h1>';
-                    //alert(landmark);
-                    //resultados.append(landmark);
-                   var_asistentes = item.attendance;       
+                   var_precio = item.price;    
+                   var_sala = item.venue;
+                   var_location = item.location;
+                   var_latitude = item.latitude;
+                   var_longitude = item.longitude
+                   var_asistentes = item.cuenta;  
+
                 });
                 ConfirmarAsistencia();
             },
@@ -127,9 +106,7 @@
                 if(var_conf=="TRUE")
                 	document.getElementById('confirmar').setAttribute("class","confirmado");
                 else
-                	document.getElementById('confirmar').setAttribute("class","por_confirmar");
-
-                
+                	document.getElementById('confirmar').setAttribute("class","por_confirmar");         
                 
                 mostrardatos();
             },
@@ -143,11 +120,12 @@
         //$('#resulta').html($resultados);
         $('#EVENTO_nombre').html(var_nombre);
 		$('#EVENTO_hora').html(var_fecha);
+		$('#EVENTO_sala').html(var_sala);
+		$('#EVENTO_lugar').html(var_location);
 		$('#EVENTO_descripcion').html(var_description);
-		//$('#BANDA_sello').html(var_sello);
 		$('#EVENTO_precio').html(var_precio);
 		$('#quantity').val(var_asistentes);
-       // $.mobile.pageLoading(true);
+		
         $("#cover").fadeOut('fast');
 		$("#base").fadeIn('fast');
     }
@@ -158,7 +136,11 @@
 	}
 	
 	function configuracion(){
-        window.open("file:///android_asset/www/html/configuracion.html");
+        window.location = "file:///android_asset/www/html/configuracion.html";
+	}
+	
+	function verMapa(){
+		window.location = 'https://maps.google.com/maps?q='+var_latitude+',+'+var_longitude+'&iwloc=A&hl=es';
 	}
 	
 </script>
@@ -231,7 +213,7 @@
 		  					<h3 style="color:white; background-image:none;">Asitirán</h3>
 		  				</TD>
 		  			    <TD align="center" style="width:25%;">
-		  			    	<INPUT TYPE="button" id="mapa" style="width:26px; height:26px; display: inline;"> 
+		  			    	<INPUT TYPE="button" id="mapa" style="width:26px; height:26px; display: inline;" onclick="verMapa()"> 
 		  			    	<h3 style="color:white; background-image:none;">Ver mapa</h3>
 		  			    </TD>
 		  			    <TD align="center" style="width:30%;">
