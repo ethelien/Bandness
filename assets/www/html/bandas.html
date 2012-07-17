@@ -15,6 +15,7 @@
     var $estilo3;
     var $name;
     var $id;
+    var cabecera="";
 
 	var numero = 0;
 	var landmark;
@@ -75,7 +76,8 @@
 	 
 	  // y lo asignamos a la celda
 	  newCell.innerHTML = landmark;
-	  newCell2.innerHTML = "PROBANDO";
+	  newCell2.innerHTML = "<img src="+cabecera+" height='64' width='64'>"
+	  	  
 	  newRow.idName=id;
 	  newRow.onclick=function(){Cargar_Banda(newRow.idName);}
 	 
@@ -92,7 +94,7 @@
         
         $.ajax({
             //url: 'http://192.168.1.101/banda_nombre.php',
-            url: 'http://158.42.76.235/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
+            url: 'http://192.168.1.102/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -102,7 +104,8 @@
                     landmark = '<h2>'+item.name+'</h2>';
                     name=item.name;
                     id=item.id;
-                    addNewRow();
+                    cabecera="http://test.bandness.com/uploads/images/band/header/"+item.header;;  
+                    addNewRow();                                         
                 });
                 //mostrardatos();
             },
@@ -111,6 +114,7 @@
             }
         });
     }
+    
     
 
 </script>

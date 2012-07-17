@@ -20,6 +20,7 @@
     var var_latitude;
     var var_asistentes;
     var var_conf="";
+
     
 		$(document).ready('load', function(){
    			$("#cover").show('fast');
@@ -58,7 +59,7 @@
         //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://158.42.76.235/evento_info.php?evento='+valor,
+            url: 'http://192.168.1.102/evento_info.php?evento='+valor,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -73,7 +74,7 @@
                    var_location = item.location;
                    var_latitude = item.latitude;
                    var_longitude = item.longitude
-                   var_asistentes = item.cuenta;  
+                   var_asistentes = item.cuenta;               
 
                 });
                 ConfirmarAsistencia();
@@ -93,7 +94,7 @@
         //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://158.42.76.235/bandee_asistencia_evento.php?evento='+valor+'&user='+user,
+            url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+valor+'&user='+user,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -123,7 +124,7 @@
 		$('#EVENTO_sala').html(var_sala);
 		$('#EVENTO_lugar').html(var_location);
 		$('#EVENTO_descripcion').html(var_description);
-		$('#EVENTO_precio').html(var_precio);
+		$('#EVENTO_precio').html(var_precio + ' €');
 		$('#quantity').val(var_asistentes);
 		
         $("#cover").fadeOut('fast');

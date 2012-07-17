@@ -62,11 +62,11 @@ body {
 }
 
 .nombres{
-	width: 70%;
+	width: 75%;
 }
 
 .logo{
-	width: 30%;
+	width: 25%;
 }
 
 h1 {
@@ -94,7 +94,7 @@ h2 {
 	display: inline-block;
     color: white;
     font-family: Tahoma;
-    font-size: small;
+    font-size: medium;
     font-weight: bolder;
     width: 100%;
     margin-top: 0px;

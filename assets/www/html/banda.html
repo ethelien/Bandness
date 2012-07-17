@@ -12,8 +12,8 @@ and open the template in the editor.
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="../css/banda.css">
-		<script type='text/javascript' src='../js/phonegap-1.2.0.js'></script>
-		<script src="../js/jquery-1.5.2.min.js"></script>
+		<script type='text/javascript' src='../js/cordova-1.5.0.js'></script>
+		<script src="../js/jquery-1.7.2.min.js"></script>
 		<script src="../js/jquery.jsonp-2.2.1.js"></script>
 	
 		<script>
@@ -25,10 +25,12 @@ and open the template in the editor.
 		var var_sello;
 		var var_estilo="";
 		var var_componentes="";
+		var cabecera="";
 		
-		$(document).ready('load', function(){
-   			$("#cover").show('fast');
-		});
+		
+		//$(document).ready('load', function(){
+   		//	$("#cover").show('fast');
+		//});
 
 //jsFiddle does not fire the window onload properly, substituted with fake load
 
@@ -37,8 +39,9 @@ and open the template in the editor.
 	    	
 			var paresVarValor = leerGET();
 			id = paresVarValor['Banda'];
+			id=48;
 			//mostrardatos();
-			obtenerNombre();
+			obtenerInfo();
 			obtenerCiudad();
 			obtenerEstilo();
 			obtenerSello();
@@ -62,19 +65,33 @@ and open the template in the editor.
 		} 
 		
 		
-		function obtenerNombre() {
+		function obtenerInfo() {
 			
 		    //resultados = $('#info');
 		    
 		    $.ajax({
-		    	url: 'http://192.168.1.100/banda_por_id.php?banda='+id,
+		    	url: 'http://192.168.1.102/banda_informacion.php?banda='+id,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
-			                var_nombre = item.name;
+			            	if(i==0){
+			            		var_nombre = item.name;
+			                	var_ciudad = item.location;
+			                	var_sello = item.label; 
+			                	cabecera="http://test.bandness.com/uploads/images/band/header/"+item.header;   	
+			            		alert(cabecera);
+			            	}
+			            	
+			            	if(i==1){
+			            		var_estilo+=item.Estilo+', '; 		            
+			            	}
+
+							if(i==2){
+				            	var_componentes+=item.Componentes+', ';
+				            }
 			            });
 			        },
 			        error: function(){
@@ -88,14 +105,13 @@ and open the template in the editor.
 		    //resultados = $('#info');
 		    
 		    $.ajax({
-	            url: 'http://192.168.1.100/banda_ciudad.php?busqueda='+id,
+	            url: 'http://192.168.1.102/banda_ciudad.php?busqueda='+id,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
-			                var_ciudad = item.location;
 			            });
 			        },
 			        error: function(){
@@ -108,7 +124,7 @@ and open the template in the editor.
 		    //resultados = $('#info');
 		    
 		    $.ajax({
-	            url: 'http://192.168.1.100/banda_estilo.php?busqueda='+id,
+	            url: 'http://192.168.1.102/banda_estilo.php?busqueda='+id,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
@@ -118,7 +134,6 @@ and open the template in the editor.
 			                //var landmark = '<h1>'+item.name+'</h1>';
 			                //alert(landmark);
 			                //resultados.append(landmark);
-			                var_estilo+=item.name+', ';
 			                //resultados.append(var_estilo);
 			            });
 			        },
@@ -133,14 +148,13 @@ and open the template in the editor.
 		    //resultados = $('#info');
 		    
 		    $.ajax({
-	            url: 'http://192.168.1.100/banda_label.php?banda='+id,
+	            url: 'http://192.168.1.102/banda_label.php?banda='+id,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
-			                var_sello = item.label;
 			            });
 			        },
 			        error: function(){
@@ -154,14 +168,13 @@ and open the template in the editor.
 			    //resultados = $('#info');
 			    
 			    $.ajax({
-		            url: 'http://192.168.1.100/banda_componentes.php?busqueda='+id,
+		            url: 'http://192.168.1.102/banda_componentes.php?busqueda='+id,
 				        dataType: 'jsonp',
 				        jsonp: 'jsoncallback',
 				        type:'get',
 				        timeout: 5000,
 				        success: function(data/*, status*/){
 				            $.each(data, function(i,item){
-				                var_componentes+=item.name+', ';
 				            });
 							mostrardatos();
 				        },
@@ -182,12 +195,13 @@ and open the template in the editor.
 			
 			function mostrardatos() {
 			    //$('#info').html($resultados);
+			    $('#BANDA_imagen').prop('src',cabecera);		    
 			    $('#BANDA_nombre').html(var_nombre);
 			    $('#BANDA_ciudad').html(var_ciudad);
 			    $('#BANDA_estilo').html(var_estilo);
 			    $('#BANDA_sello').html(var_sello);
 			    $('#BANDA_componentes').html(var_componentes);
-			    $("#cover").fadeOut('fast');
+			   // $("#cover").fadeOut('fast');
 			    $("#base").fadeIn('1000');
 			    //$.mobile.pageLoading(true);
 			}
@@ -200,13 +214,16 @@ and open the template in the editor.
 	<body onload="onBodyLoad()">
 		<FORM id="form" METHOD=GET>
 			 
-			 <div id="cover"> LOADING... </div>
+			<!--  <div id="cover"> LOADING... </div> -->
 			 
 			 <div id="base">
 			 
 			  		<TABLE align="center" id="Busqueda">
 						<TR>
-  							<TD align="center" style="width:30%;"><INPUT TYPE="button" id="Banda" style="width:50px; height:50px; display: inline;"> </TD> <TD align="center" style="width:70%;"><H1 style="display: inline;"><span id="BANDA_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1></TD>
+  							<TD align="center" style="width:30%;">
+  								<img id="BANDA_imagen" height='64' width='64'> </TD> 
+  							<TD align="center" style="width:70%;">
+  								<H1 style="display: inline;"><span id="BANDA_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1></TD>
 						</TR> 
 					</TABLE>
 				<div id="resul">
