@@ -13,6 +13,8 @@ and open the template in the editor.
 <script src="js/jquery.jsonp-2.2.1.js"></script><script>
     var $resultados;
     var $valor;
+    var id;
+    var imagenes;
     var linkLocation;
     
     $(document).ready(function() {
@@ -21,7 +23,12 @@ and open the template in the editor.
     
         document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
     });
-      
+
+    function onBodyLoad() {
+    	
+		obtenerDatos();
+    }
+    
 	function mostrarEstilos() {
 
 		div = document.getElementById('resul');
@@ -77,6 +84,30 @@ and open the template in the editor.
         $('#resulta').html($resultados);
         $.mobile.pageLoading(true);
     }
+       
+    function obtenerDatos() {
+        
+        $.ajax({
+            url: 'http://158.42.141.6/evento_por_fecha.php',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data/*, status*/){
+                $.each(data, function(i,item){	
+               	   	id=item.id;
+               	    imagenes='http://test.bandness.com/uploads/images/posters/'+item.picture;
+              	  	var celda = document.getElementById(i);
+              	  	celda.id=id;
+               	    celda.src=imagenes;	
+                });
+                //ConfirmarAsistencia();
+            },
+            error: function(){
+                alert('no va');
+            }
+        });
+    }
     
     function continuar(){
 	    event.preventDefault();
@@ -90,9 +121,9 @@ and open the template in the editor.
         $("body").fadeOut('slow',redirectPage);     
 	}
 	
-	function zonaeventos(){
+	function zonaeventos(i){
 		event.preventDefault();
-        linkLocation = "html/evento.html";
+        linkLocation = "html/evento.html?Evento="+i;
         $("body").fadeOut('slow',redirectPage);     
 	}
 	
@@ -120,7 +151,7 @@ and open the template in the editor.
 </script>
 
 </head>
-<body>
+<body onload="onBodyLoad()">
     
 	<FORM id="form" METHOD=GET>
 	
@@ -149,10 +180,20 @@ and open the template in the editor.
 		 				<TR>
 		 					<TD align="center" colspan="3"> <H1 style="display: inline;">Próximos conciertos</H1></TD>
 						<TR>
-		      				<TD align="center"><H1 style="display: inline;" onclick="zonaeventos()">1:</H1><TD align="center"><H1 style="display: inline;" onclick="zonaeventos()">2:</H1></TD> <TD align="center"> <H1 style="display: inline;" onclick="zonaeventos()">3:</H1></TD>
+		      				<TD align="center">
+		      					<img id="0" height='72' width='72' onclick="zonaeventos(id)"></TD>
+		      				<TD align="center">
+		      					<img id="1" height='72' width='72' onclick="zonaeventos(id)"></TD> 
+		      				<TD align="center"> 
+		      					<img id="2" height='72' width='72' onclick="zonaeventos(id)"></TD>
 						</TR> 
 						<TR>
-		     				<TD align="center"><H1 style="display: inline;" onclick="zonaeventos()">1:</H1><TD align="center"><H1 style="display: inline;" onclick="zonaeventos()">2:</H1></TD> <TD align="center"> <H1 style="display: inline;" onclick="zonaeventos()">3:</H1></TD>
+		     				<TD align="center">
+		      					<img id="3" height='72' width='72' onclick="zonaeventos(id)"></TD>
+		     				<TD align="center">
+		      					<img id="4" height='72' width='72' onclick="zonaeventos(id)"></TD>
+		     				<TD align="center"> 
+		      					<img id="5" height='72' width='72' onclick="zonaeventos(id)"></TD>
 						</TR>
 					</TABLE>				
 		 	</div> 

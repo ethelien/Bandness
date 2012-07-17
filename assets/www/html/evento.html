@@ -25,15 +25,30 @@
 		$(document).ready('load', function(){
    			$("#cover").show('fast');
 		});
-    
-	    function onBodyLoad() {
-	    	
-			//var paresVarValor = leerGET();
-			//id = paresVarValor['Banda'];
-			//mostrardatos();
-			obtenerDatos();
-			//mostrardatos();
-	    }
+        
+	function leerGET(){
+	    var cadGET = location.search.substr(1,location.search.length);
+		var arrGET = cadGET.split("&");
+		var asocGET = new Array();
+		var variable = "";
+		var valor = "";
+		for(i=0;i<arrGET.length;i++){
+			 var aux = arrGET[i].split("=");
+			 variable = aux[0];
+			 valor = aux[1];
+	 		asocGET[variable] = valor;
+		}
+	 return asocGET;
+	} 
+	
+	
+    function onBodyLoad() {
+    	
+		var paresVarValor = leerGET();
+		Evento = paresVarValor['Evento'];
+		obtenerDatos();
+		
+    } 
       
     function cambiar(){
 
@@ -54,12 +69,12 @@
     function obtenerDatos() {
       		
 		//alert(valor);
-		valor=38; // SIMPLEMENTE PARA PROBAR 
+		//valor=38; // SIMPLEMENTE PARA PROBAR 
 		
         //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://192.168.1.102/evento_info.php?evento='+valor,
+            url: 'http://158.42.141.6/evento_info.php?evento='+Evento,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -94,7 +109,7 @@
         //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+valor+'&user='+user,
+            url: 'http://158.42.141.6/bandee_asistencia_evento.php?evento='+valor+'&user='+user,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
