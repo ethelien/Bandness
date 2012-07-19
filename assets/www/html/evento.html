@@ -4,7 +4,7 @@
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/evento.css">
-<script type='text/javascript' src='js/cordova-1.5.0.js'></script>
+<script type='text/javascript' src='../js/cordova-1.5.0.js'></script>
 <script src="../js/jquery-1.7.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
 <script>
@@ -13,6 +13,8 @@
     var var_nombre;
     var var_description;
     var var_fecha;
+    var var_dia;
+    var var_mes;
     var var_precio;
     var var_sala;
     var var_location;
@@ -45,6 +47,7 @@
     function onBodyLoad() {
     	
 		var paresVarValor = leerGET();
+		//User_id = paresVarValor['User'];
 		Evento = paresVarValor['Evento'];
 		obtenerDatos();
 		
@@ -52,29 +55,26 @@
       
     function cambiar(){
 
-        //Aumentamos el valor del campo
+        //Aumentamos el valor del campo            
         
         if(document.getElementById('confirmar').getAttribute("class") == 'por_confirmar'){
         	document.getElementById('confirmar').setAttribute("class","confirmado");
             $('#quantity').val(parseInt($('#quantity').val()) + 1); 	
+            ConfirmarAsistencia(0); 
         }
         
         else{
         	document.getElementById('confirmar').setAttribute("class","por_confirmar");    	
-            $('#quantity').val(parseInt($('#quantity').val()) - 1); 	  
+            $('#quantity').val(parseInt($('#quantity').val()) - 1);
+            ConfirmarAsistencia(123);        	  
         }
         
     }
         
     function obtenerDatos() {
-      		
-		//alert(valor);
-		//valor=38; // SIMPLEMENTE PARA PROBAR 
-		
-        //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://158.42.141.6/evento_info.php?evento='+Evento,
+            url: 'http://192.168.1.102/evento_info.php?evento='+Evento,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -83,7 +83,11 @@
                 $.each(data, function(i,item){
                    var_nombre = item.name;
                    var_description = item.description;
+                   
                    var_fecha = item.date_init;  
+                   var_dia = item.Day;  
+                   var_mes = item.Month;  
+                    
                    var_precio = item.price;    
                    var_sala = item.venue;
                    var_location = item.location;
@@ -92,7 +96,7 @@
                    var_asistentes = item.cuenta;               
 
                 });
-                ConfirmarAsistencia();
+                ComprobarAsistencia();
             },
             error: function(){
                 alert('no va');
@@ -100,16 +104,16 @@
         });
     }
     
-    function ConfirmarAsistencia() {
+    function ComprobarAsistencia() {
   		
 		//alert(valor);
 		valor=38; // SIMPLEMENTE PARA PROBAR 
-		user=51;
+		user=123;
 		
         //resultados = $('#resulta');
         
         $.ajax({
-            url: 'http://158.42.141.6/bandee_asistencia_evento.php?evento='+valor+'&user='+user,
+            url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+Evento+'&user='+user,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -121,6 +125,7 @@
                 
                 if(var_conf=="TRUE")
                 	document.getElementById('confirmar').setAttribute("class","confirmado");
+                	
                 else
                 	document.getElementById('confirmar').setAttribute("class","por_confirmar");         
                 
@@ -132,8 +137,32 @@
         });
     }
     
+   function ConfirmarAsistencia(i) {		
+   
+   		User_id=123;
+   		alert(User_id);
+   		alert(Evento);
+   		alert(i);
+        
+        $.ajax({
+            url: 'http://192.168.1.102/evento_confirmar_asistencia.php?user_id='+User_id+'&event_id='+Evento+'&valor='+i,
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            type:'get',
+            timeout: 5000,
+            success: function(data){
+
+            }, 
+            error: function(){
+
+            }
+        });
+    }
+    
     function mostrardatos() {
         //$('#resulta').html($resultados);
+        $('#EVENTO_mes').html(var_mes);
+        $('#EVENTO_dia').html(var_dia);
         $('#EVENTO_nombre').html(var_nombre);
 		$('#EVENTO_hora').html(var_fecha);
 		$('#EVENTO_sala').html(var_sala);
@@ -172,8 +201,14 @@
 	  		<TABLE align="center" id="Busqueda">
 				<TR>
 	  				<TD align="center" style="width:30%;">
-	  					<INPUT TYPE="button" id="fecha_evento" style="width:72px; height:72px; display: inline;"> 
+	  					<button id="fecha_evento" style="width:68px; height:68px; display: inline;"> 
+							<H4>
+	  							<span id="EVENTO_mes" type="text" name="mes"></span><BR>
+	  							<span id="EVENTO_dia" type="text" name="mes" style="font-size: x-large"></span>						
+	  						</H4>	  					
+	  					</button>
 	  				</TD> 
+	  				
 	  				<TD align="center" style="width:70%;">
 	  					<H1 style="display: inline;">
 	  					<span id="EVENTO_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1>
@@ -225,7 +260,7 @@
 				<TABLE align="center" id="botones">
 					<TR>
 		  				<TD align="center" style="width:25%;">
-		  					<h3><INPUT name="quantity" id="quantity" size="3" style="color:white; background-image:none;" DISABLED></h3>
+		  					<h3><INPUT name="quantity" id="quantity" size="3" style="color:white; font-size: large; background-image:none;" DISABLED></h3>
 		  					<h3 style="color:white; background-image:none;">Asitirán</h3>
 		  				</TD>
 		  			    <TD align="center" style="width:25%;">

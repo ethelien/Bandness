@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/bandas.css">
-<script type='text/javascript' src='js/cordova-1.5.0.js'></script>
+<script type='text/javascript' src='../js/cordova-1.5.0.js'></script>
 <script src="../js/jquery-1.7.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
 <script>
@@ -71,8 +71,8 @@
 	  var newCell = newRow.insertCell(newRow.cells.length);
 	  var newCell2 = newRow.insertCell(newRow.cells.length);
 
-	  newCell.className = "nombres";
-	  newCell2.className = "logo";
+	  newCell.className = 'nombres';
+	  newCell2.className = 'logo';
 	 
 	  // y lo asignamos a la celda
 	  newCell.innerHTML = landmark;
@@ -80,9 +80,7 @@
 	  	  
 	  newRow.idName=id;
 	  newRow.onclick=function(){Cargar_Banda(newRow.idName);}
-	 
-	  // aviso ;)
-	  //alert(txt)
+
 	}
 
 	function Cargar_Banda(x){
@@ -129,7 +127,6 @@
 	 	<div id="resul">
 	 	  	<TABLE align="center" id="bandas">
 			  <tr class="filas" id="fila">
-			    <td class="celdas" id="celda" style="display:none;">COLUMNA1</td>
 			  </tr>
 			</TABLE>
 		</div>

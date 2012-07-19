@@ -28,9 +28,12 @@ and open the template in the editor.
 		var cabecera="";
 		
 		
-		//$(document).ready('load', function(){
-   		//	$("#cover").show('fast');
-		//});
+	$(document).ready(function() {
+        $("body").css("display", "none");
+  	    $("body").fadeIn('slow');
+    
+        document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
+    });
 
 //jsFiddle does not fire the window onload properly, substituted with fake load
 
@@ -39,7 +42,6 @@ and open the template in the editor.
 	    	
 			var paresVarValor = leerGET();
 			id = paresVarValor['Banda'];
-			id=48;
 			//mostrardatos();
 			obtenerInfo();
 			obtenerCiudad();
@@ -85,11 +87,11 @@ and open the template in the editor.
 			            	}
 			            	
 			            	if(i==1){
-			            		var_estilo+=item.Estilo+', '; 		            
+			            		var_estilo+=item.Estilo; 		            
 			            	}
 
 							if(i==2){
-				            	var_componentes+=item.Componentes+', ';
+				            	var_componentes+=item.Componentes;
 				            }
 			            });
 			        },
@@ -194,6 +196,7 @@ and open the template in the editor.
 			
 			function mostrardatos() {
 			    //$('#info').html($resultados);
+			    
 			    $('#BANDA_imagen').prop('src',cabecera);		    
 			    $('#BANDA_nombre').html(var_nombre);
 			    $('#BANDA_ciudad').html(var_ciudad);
@@ -219,32 +222,30 @@ and open the template in the editor.
 			 
 			  		<TABLE align="center" id="Busqueda">
 						<TR>
-  							<TD align="center" style="width:30%;">
+  							<TD align="center" style="width:20%;">
   								<img id="BANDA_imagen" height='64' width='64'> </TD> 
-  							<TD align="center" style="width:70%;">
+  							<TD align="center" style="width:80%;">
   								<H1 style="display: inline;"><span id="BANDA_nombre" type="textarea" name="ciudad" style="color: white;"></span></H1></TD>
 						</TR> 
 					</TABLE>
 				<div id="resul">
-	        	<!--  <span id="resulta" rows="5" type="text" name="banda" style="width:98%; background-color:transparent; border: none; resize: none; color:black"  onclick="continuar()"></span> -->
-	 			<!--  <div id="cuadro" onclick="mover(this)">click</div> -->
-	 			
+	        		 			
 	 				<TABLE id="datos">
 		 				<TR>
 		 					<TD align="left" style="vertical-align:text-top"><h2 align="left">Ciudad: </h2> </TD>
-		 					<TD align="left"><h2><span id="BANDA_ciudad" type="text" name="ciudad" style="color: white; display:inline"></span></h2></TD>
+		 					<TD align="left"><h2><span id="BANDA_ciudad" type="text" name="ciudad" style="color: black; display:inline"></span></h2></TD>
 		 				</TR>
 		 				<TR>
 		 					<TD align="left" style="vertical-align:text-top"><h2 align="left">Componentes:</h2></TD>
-		 					<TD align="left"><h2><span id="BANDA_componentes" type="text" name="estilo" style="color: white; display:inline"></span></h2></TD>
+		 					<TD align="left"><h2><span id="BANDA_componentes" type="text" name="estilo" style="color: black; display:inline"></span></h2></TD>
 		 				</TR>
 		 				<TR>
 		 					<TD align="left" style="vertical-align:text-top"><h2 align="left">Estilo: </h2></TD> 
-		 					<TD align="left"><h2><span id="BANDA_estilo" type="text" name="estilo" style="color: white; display:inline"></span></h2></TD>
+		 					<TD align="left"><h2><span id="BANDA_estilo" type="text" name="estilo" style="color: black; display:inline"></span></h2></TD>
 		 				</TR>
 						<TR>
 		 					<TD align="left" style="vertical-align:text-top"><h2 align="left">Sello:</h2> </TD> 
-		 					<TD align="left"><h2><span id="BANDA_sello" type="text" name="sello" style="color: white; display:inline"></span></h2></TD>				
+		 					<TD align="left"><h2><span id="BANDA_sello" type="text" name="sello" style="color: black; display:inline"></span></h2></TD>				
 		 				</TR>
 		 			</TABLE>	
 		 			<HR>

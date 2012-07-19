@@ -98,16 +98,16 @@ body {
     background-color: #C0C0C0;
     color: #FFFFFF;
     display: inline-block;
-    height: 70%;
+    height: 80%;
     width: 100%;
 }
 
 #tabla {
-    left: 20%;
+    left: 10%;
     margin-left: auto;
     position: absolute;
     top: 10%;
-    width: 60%;
+    width: 80%;
     table-layout: fixed;
     text-align: left;
 }
@@ -139,7 +139,6 @@ body {
     z-index: 100;
 }
 
-
 #zona input {
 	font-size: small;
     background-color: #404448;
@@ -161,8 +160,6 @@ body {
 	background-position: -20px -250px;
 	text-align: center;
 }
-
-
 
 *#Dale_caña{
 	color: white;

@@ -61,6 +61,12 @@ body {
 	font-weight: bold;
 }
 
+#bandas {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;  
+}
+
 .nombres{
 	width: 75%;
 }

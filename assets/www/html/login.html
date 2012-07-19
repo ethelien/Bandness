@@ -8,7 +8,7 @@ and open the template in the editor.
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="../css/login.css">
-		<script type='text/javascript' src='js/cordova-1.5.0.js'></script>
+		<script type='text/javascript' src='../js/cordova-1.5.0.js'></script>
 		<script src="../js/jquery-1.7.2.min.js"></script>
 		<script src="../js/jquery.jsonp-2.2.1.js"></script>
 	
@@ -62,11 +62,11 @@ and open the template in the editor.
 	        	pass_corr_text.style.display='none';
 	        }
 	        
-	        else if(user_id==pass){
+	        else if(pass==true){
 	        	entrar();  	
 	        }
 	        
-	       else if(user_id!=pass && user_id!="FALSE"){
+	       else if(pass==false && user_id!="FALSE"){
 	        	user_wrong.style.display='none';
 	        	user_wrong_text.style.display='none';
 	        	user_corr.style.display='inline'; 
@@ -81,9 +81,8 @@ and open the template in the editor.
 		
 		
 		function validarNick() {
-			
 			valor=document.getElementById("N").value;
-			
+
 		    //resultados = $('#info');
 		    
 		    $.ajax({
@@ -93,9 +92,8 @@ and open the template in the editor.
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
-			            $.each(data, function(i,item){
-			                user_id = item.user_id;
-			                alert(user_id);
+			            $.each(data, function(i,item){;
+			                user_id = item.id;
 			            });
 			            validarPass();
 			        },
@@ -110,17 +108,15 @@ and open the template in the editor.
 			valor=document.getElementById("P").value;
 			
 		    //resultados = $('#info');
-		    
 		    $.ajax({
-		        url: 'http://192.168.1.102/bandee_nick.php?busqueda='+valor,
+		        url: 'http://192.168.1.102/bandee_pass.php?pass='+valor+'&id='+user_id,
 			        dataType: 'jsonp',
 			        jsonp: 'jsoncallback',
 			        type:'get',
 			        timeout: 5000,
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){
-			                pass = item.id;
-			                alert(pass);
+			                pass = item.Resultado;
 			            });
 			            Login();
 			        },
@@ -140,7 +136,7 @@ and open the template in the editor.
 			}
 			
 			function entrar(){
-			    linkLocation = "menu.html";
+			    linkLocation = "menu.html?user_id="+user_id;
        			 $("body").fadeOut('slow',redirectPage);   
 			}
 			
@@ -184,7 +180,7 @@ and open the template in the editor.
 							<img class="Corr" style="display: none;" id="Pass_corr"></img>
 							<img class="Wrong" style="display: none;" id="Pass_wrong"></img>
 							<H2 style="display: none;" id="Pass_corr_text"> password correcto</H2>
-							<H3 style="display: none;" id="User_wrong_text"> password incorrecto</H3>
+							<H3 style="display: none;" id="Pass_wrong_text"> password incorrecto</H3>
 						</TD> 
 					 </TR> 
 				</TABLE>
@@ -193,7 +189,7 @@ and open the template in the editor.
 				<BUTTON id="Registrar" type="button" onclick="registrar()" style="display: inline;">
 			    </BUTTON>
 			    
-				<BUTTON id="Entrar" type="button" onclick="entrar()">
+				<BUTTON id="Entrar" type="button" onclick="validarNick()">
 			    </BUTTON>
 			    
 			
