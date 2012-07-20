@@ -37,6 +37,20 @@ body {
     width: 100%;
 }
 
+#conciertos {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;  
+}
+
+.nombres{
+	width: 75%;
+}
+
+.logo{
+	width: 25%;
+}
+
 #amigos {
 	position: absolute;
 	bottom:0;

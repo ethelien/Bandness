@@ -15,6 +15,7 @@ and open the template in the editor.
 		<script>
 		var $resultados;
 		var user_id;
+		var id;
 		var pass;
 		
 		$(document).ready(function() {
@@ -63,7 +64,7 @@ and open the template in the editor.
 	        }
 	        
 	        else if(pass==true){
-	        	entrar();  	
+	        	Obtener_id();
 	        }
 	        
 	       else if(pass==false && user_id!="FALSE"){
@@ -94,6 +95,7 @@ and open the template in the editor.
 			        success: function(data/*, status*/){
 			            $.each(data, function(i,item){;
 			                user_id = item.id;
+
 			            });
 			            validarPass();
 			        },
@@ -126,6 +128,26 @@ and open the template in the editor.
 			    });
 			}
 			
+			function Obtener_id() {
+						
+		    $.ajax({
+		        url: 'http://192.168.1.102/bandee_user_id.php?user='+user_id,
+			        dataType: 'jsonp',
+			        jsonp: 'jsoncallback',
+			        type:'get',
+			        timeout: 5000,
+			        success: function(data/*, status*/){
+			            $.each(data, function(i,item){
+			                id = item.id;
+			            });
+	        			entrar();  	
+			        },
+			        error: function(){
+			            alert('no va');
+			        }
+			    });
+			}
+			
 			function mostrardatos() {
 			    $('#info').html($resultados);
 			    $.mobile.pageLoading(true);
@@ -136,7 +158,8 @@ and open the template in the editor.
 			}
 			
 			function entrar(){
-			    linkLocation = "menu.html?user_id="+user_id;
+				alert(id);
+			    linkLocation = "menu.html?User_id="+id;
        			 $("body").fadeOut('slow',redirectPage);   
 			}
 			

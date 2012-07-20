@@ -24,9 +24,12 @@
     var var_conf="";
 
     
-		$(document).ready('load', function(){
-   			$("#cover").show('fast');
-		});
+	$(document).ready(function() {
+        $("body").css("display", "none");
+  	    $("body").fadeIn('slow');
+    
+        document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
+    });
         
 	function leerGET(){
 	    var cadGET = location.search.substr(1,location.search.length);
@@ -193,8 +196,6 @@
 </head>
 <body onload="onBodyLoad()">
 
-
-		<div id="cover"> Loading... </div>	
 		
 		<div id="base">
 		 

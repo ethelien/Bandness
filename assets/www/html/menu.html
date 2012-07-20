@@ -15,48 +15,28 @@
   	    $("body").fadeIn('slow');
     
    });
-
-    function obtenerDatos() {
-        valor=document.getElementById("dato").value;
-        
-        if (document.getElementById("Estilo").checked){
-       	 var tipo=document.getElementById("Estilo").value;
-        }
-        else if (document.getElementById("Ciudad").checked){
-       	 var tipo=document.getElementById("Ciudad").value;
-        }
-        else {
-       	 var tipo=document.getElementById("Cercania").value;
-        }
-        
-		
-		alert(valor);
-		
-        resultados = $('#resulta');
-        
-        $.ajax({
-            url: 'http://192.168.1.102/banda_informacion.php?banda='+valor,
-            dataType: 'jsonp',
-            jsonp: 'jsoncallback',
-            type:'get',
-            timeout: 5000,
-            success: function(data/*, status*/){
-                $.each(data, function(i,item){
-                    var landmark = '<h1>'+item.bio+'</h1>';
-                    alert(landmark);
-                    resultados.append(landmark);
-                });
-                mostrardatos();
-            },
-            error: function(){
-                alert('no va');
-            }
-        });
-    }
-    
-    function mostrardatos() {
-        $('#resulta').html($resultados);
-        $.mobile.pageLoading(true);
+   
+   	function leerGET(){
+		    var cadGET = location.search.substr(1,location.search.length);
+			var arrGET = cadGET.split("&");
+			var asocGET = new Array();
+			var variable = "";
+			var valor = "";
+			for(i=0;i<arrGET.length;i++){
+				 var aux = arrGET[i].split("=");
+				 variable = aux[0];
+				 valor = aux[1];
+		 		asocGET[variable] = valor;
+			}
+		 return asocGET;
+	} 
+	
+	
+    function onBodyLoad() {
+    	
+		var paresVarValor = leerGET();
+		User_id = paresVarValor['User_id'];
+		alert(User_id);
     }
     
     function bandas(){
@@ -71,7 +51,8 @@
 	}
 	
 	function conciertos(){
-		linkLocation = "conciertos.html";
+		alert(User_id);
+		linkLocation = "conciertos.html?User_id="+User_id;
         $("body").fadeOut('slow',redirectPage);     	
 	}
 	
@@ -87,7 +68,7 @@
 </script>
 
 </head>
-<body>
+<body onload="onBodyLoad()">
 
 		<div id="base">
 		 
