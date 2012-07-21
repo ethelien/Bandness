@@ -30,7 +30,7 @@ html{
 body {
     margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
 }
 
 #base {
@@ -43,12 +43,14 @@ body {
     width: 100%;
 }
 
-#resul{
-	position: absolute;
+.filas{
     background-color: #C0C0C0;
-    color: #FFFFFF;
-    display: inline-block;
-    width: 100%;
+    width:100%;
+}
+
+#conciertos {
+    width: 100%;  
+    border-spacing: 0px 1px;
 }
 
 #fechas{
@@ -93,12 +95,13 @@ body {
 	}
 
 h1 {
+    text-align: center;
  	color: white;
     display: inline-block;
     font-family: Tahoma;
     font-size: medium;
     font-weight: bolder;
-    height: 100%;
+    height: 30px;
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -117,7 +120,7 @@ h2 {
 	display: inline-block;
     color: white;
     font-family: Tahoma;
-    font-size: small;
+    font-size: medium;
     font-weight: bolder;
     width: 100%;
     margin-top: 0px;

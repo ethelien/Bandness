@@ -16,6 +16,9 @@
     var $name;
     var $id;
     var cabecera="";
+    var fecha;
+    var lugar;
+    var par=0;
 
 	var numero = 0;
 	var landmark;
@@ -67,6 +70,15 @@
 	  // creamos una nueva fila
 	  var newRow = TABLE.insertRow(-1);
 	  newRow.className = TROW.attributes['class'].value;
+	  
+	  if(par=='1'){
+	  	newRow.style.background = "#D0D0D0";
+	  	par--;
+	  }
+	  
+	  else
+	  	par++;
+	  	
 	  // creamos una nueva celda
 	  var newCell = newRow.insertCell(newRow.cells.length);
 	  var newCell2 = newRow.insertCell(newRow.cells.length);
@@ -98,11 +110,19 @@
             type:'get',
             timeout: 5000,
             success: function(data/*, status*/){
-                $.each(data, function(i,item){
-                    landmark = '<h2>'+item.name+'</h2>';
+                $.each(data, function(i,item){         
                     name=item.name;
                     id=item.id;
                     cabecera="http://test.bandness.com/uploads/images/band/header/"+item.header;  
+                    lugar=item.venue;
+                    if(item.date_init!=0){
+                    	fecha=item.date_init;
+                    	landmark = '<h2>'+name+'</h2><BR><h2>'+fecha+'</h2><BR><h2>'+lugar+'</h2>';
+                    }
+                    
+                    else
+                   		landmark = '<h2>'+name+'</h2><BR>';
+                    
                     addNewRow();                                         
                 });
                 //mostrardatos();
@@ -122,7 +142,7 @@
 
  	 <div id="base">
 	  
-	 	<h1 style="height:30px;">Actualizaciones de bandas</h1>
+	 	<h1>Actualizaciones de bandas</h1>
 
 	 	<div id="resul">
 	 	  	<TABLE align="center" id="bandas">
