@@ -6,66 +6,7 @@
 <script type='text/javascript' src='js/cordova-1.5.0.js'></script>
 <script src="../js/jquery-1.7.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
-<script>
-    var $resultados;
-    var $valor;
-    
-    $(document).ready(function() {
-        $("body").css("display", "none");
-  	    $("body").fadeIn('slow');
-    
-   });
-   
-   	function leerGET(){
-		    var cadGET = location.search.substr(1,location.search.length);
-			var arrGET = cadGET.split("&");
-			var asocGET = new Array();
-			var variable = "";
-			var valor = "";
-			for(i=0;i<arrGET.length;i++){
-				 var aux = arrGET[i].split("=");
-				 variable = aux[0];
-				 valor = aux[1];
-		 		asocGET[variable] = valor;
-			}
-		 return asocGET;
-	} 
-	
-	
-    function onBodyLoad() {
-    	
-		var paresVarValor = leerGET();
-		User_id = paresVarValor['User_id'];
-		alert(User_id);
-    }
-    
-    function bandas(){
-        //window.open("file:///android_asset/www/html/publico_banda.html?Banda="+valor);
-        linkLocation = "bandas.html";
-        $("body").fadeOut('slow',redirectPage);     	
-	}
-	
-	function configuracion(){
-		linkLocation = "banda_configuracion.html";
-        $("body").fadeOut('slow',redirectPage);     	
-	}
-	
-	function conciertos(){
-		alert(User_id);
-		linkLocation = "conciertos.html?User_id="+User_id+"&Valor=0";
-        $("body").fadeOut('slow',redirectPage);     	
-	}
-	
-	function diario(){
-		linkLocation = "diario.html";
-        $("body").fadeOut('slow',redirectPage);     	
-	}
-	
-    function redirectPage() {
-		window.location = linkLocation;
-	}
-	
-</script>
+<script src="../js/menu.js"></script>
 
 </head>
 <body onload="onBodyLoad()">
@@ -74,20 +15,20 @@
 		 
 	  		<TABLE align="center" id="Busqueda" cellspacing="0">
 				<TR onclick="conciertos()">
-	  				<TD id="Fila" align="center" style="width:60%;" ><H1 style="display: inline;">Eventos</H1></TD>
-	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos" style="width:120px; height:120px; display: block;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" ><H1>Eventos</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos"></a> </TD> 
 				</TR>
 				<TR onclick="conciertos()">
-	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Bandas</H1></TD>
-	  				<TD id="Fila" align="center" style="width:40%;"><a id="Bandas" style="width:120px; height:120px; display: block;"></img> </TD> 
+	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1>Bandas</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Bandas"></a> </TD> 
 				</TR> 
 				<TR onclick="diario()">
-	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">Diario de conciertos</H1></TD>
-	  				<TD id="Fila" align="center" style="width:40%;"><a id="Diario" style="width:120px; height:120px; display: block;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1>Diario de conciertos</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Diario"></a> </TD> 
 				</TR> 
 				<TR onclick="configuracion()">
-	  				<TD id="Fila" align="center" style="width:60%;"><H1 style="display: inline;">Config</H1></TD>
-	  				<TD id="Fila" align="center" style="width:40%;"><a id="Config" style="width:120px; height:120px; display: block;"></img> </TD> 
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1>Config</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Config"></a> </TD> 
 				</TR>  
 			</TABLE>
 			

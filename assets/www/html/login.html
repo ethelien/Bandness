@@ -1,7 +1,3 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,163 +7,7 @@ and open the template in the editor.
 		<script type='text/javascript' src='../js/cordova-1.5.0.js'></script>
 		<script src="../js/jquery-1.7.2.min.js"></script>
 		<script src="../js/jquery.jsonp-2.2.1.js"></script>
-	
-		<script>
-		var $resultados;
-		var user_id;
-		var id;
-		var pass;
-		
-		$(document).ready(function() {
-        	$("body").css("display", "none");
-  	    	$("body").fadeIn('slow');
-    
-   	    });
-		
-		function leerGET(){
- 		    var cadGET = location.search.substr(1,location.search.length);
-  			var arrGET = cadGET.split("&");
-  			var asocGET = new Array();
-  			var variable = "";
-  			var valor = "";
-  			for(i=0;i<arrGET.length;i++){
-  				 var aux = arrGET[i].split("=");
-   				 variable = aux[0];
-   				 valor = aux[1];
-   		 		asocGET[variable] = valor;
-  			}
- 		 return asocGET;
-		} 
-		
-		//FALTA PROBAR LOGIN CON EL PASS (EL DE AHORA ES MUY MUY LARGO)
-		
-	    function Login(){
-
-	        var user_corr = document.getElementById('User_corr');
-	        var user_wrong = document.getElementById('User_wrong');
-	        var pass_corr = document.getElementById('Pass_corr');
-	        var pass_wrong = document.getElementById('Pass_wrong');
-	        var user_corr_text = document.getElementById('User_corr_text');
-	        var user_wrong_text = document.getElementById('User_wrong_text');
-	        var pass_corr_text = document.getElementById('Pass_corr_text');
-	        var pass_wrong_text = document.getElementById('Pass_wrong_text');
-	        
-	        if(user_id==""){
-	        	user_wrong.style.display='inline';
-	        	user_wrong_text.style.display='inline';
-	        	user_corr.style.display='none';
-	        	user_corr_text.style.display='none';
-	        	pass_wrong.style.display='inline';
-	        	pass_wrong_text.style.display='inline';
-	        	pass_corr.style.display='none';
-	        	pass_corr_text.style.display='none';
-	        }
-	        
-	        else if(pass==true){
-	        	Obtener_id();
-	        }
-	        
-	       else if(pass==false && user_id!="FALSE"){
-	        	user_wrong.style.display='none';
-	        	user_wrong_text.style.display='none';
-	        	user_corr.style.display='inline'; 
-	        	user_corr_text.style.display='inline'; 
-	        	pass_wrong.style.display='inline';
-	        	pass_wrong_text.style.display='inline';
-	        	pass_corr.style.display='none';
-	        	pass_corr_text.style.display='none';    	
-	        }
-	        
-	    }
-		
-		
-		function validarNick() {
-			valor=document.getElementById("N").value;
-
-		    //resultados = $('#info');
-		    
-		    $.ajax({
-		        url: 'http://192.168.1.102/bandee_nick.php?busqueda='+valor,
-			        dataType: 'jsonp',
-			        jsonp: 'jsoncallback',
-			        type:'get',
-			        timeout: 5000,
-			        success: function(data/*, status*/){
-			            $.each(data, function(i,item){;
-			                user_id = item.id;
-
-			            });
-			            validarPass();
-			        },
-			        error: function(){
-			            alert('no va');
-			        }
-			    });
-			}
-			
-		function validarPass() {
-			
-			valor=document.getElementById("P").value;
-			
-		    //resultados = $('#info');
-		    $.ajax({
-		        url: 'http://192.168.1.102/bandee_pass.php?pass='+valor+'&id='+user_id,
-			        dataType: 'jsonp',
-			        jsonp: 'jsoncallback',
-			        type:'get',
-			        timeout: 5000,
-			        success: function(data/*, status*/){
-			            $.each(data, function(i,item){
-			                pass = item.Resultado;
-			            });
-			            Login();
-			        },
-			        error: function(){
-			            alert('no va');
-			        }
-			    });
-			}
-			
-			function Obtener_id() {
-						
-		    $.ajax({
-		        url: 'http://192.168.1.102/bandee_user_id.php?user='+user_id,
-			        dataType: 'jsonp',
-			        jsonp: 'jsoncallback',
-			        type:'get',
-			        timeout: 5000,
-			        success: function(data/*, status*/){
-			            $.each(data, function(i,item){
-			                id = item.id;
-			            });
-	        			entrar();  	
-			        },
-			        error: function(){
-			            alert('no va');
-			        }
-			    });
-			}
-			
-			function mostrardatos() {
-			    $('#info').html($resultados);
-			    $.mobile.pageLoading(true);
-			}
-			
-			function registrar(){
-       		 	window.open("http://WWw.bandness.com");
-			}
-			
-			function entrar(){
-				alert(id);
-			    linkLocation = "menu.html?User_id="+id;
-       			 $("body").fadeOut('slow',redirectPage);   
-			}
-			
-			function redirectPage() {
-				window.location = linkLocation;
-			}
-
-		</script>
+		<script src="../js/login.js"></script>
 		
 		
 	</head>
@@ -183,7 +23,7 @@ and open the template in the editor.
 				
 	            <TABLE align="center" id="zona" cellspacing="10">
 					 <TR>
-						<TD align="right"><H1 style="display: inline;">User</H1></TD> 
+						<TD align="right"><H1>User</H1></TD> 
 						<TD align="left"><input type="text" id="N" name="Nombre" value="" style="border-color:#111111; border-radius: 5px;"/> </TD>
 					 </TR> 
 					 <TR>
@@ -195,7 +35,7 @@ and open the template in the editor.
 						</TD> 
 					 </TR> 
 					 <TR>
-						 <TD align="right";> <H1 style="display: inline;">Pass</H1></TD> 
+						 <TD align="right";> <H1>Pass</H1></TD> 
 						 <TD align="left"> <a id="pass"></a> <input type="password" id="P" name="Password" value="" style="border-color:#111111; border-radius: 5px;"/></TD>
 					</TR>
 					<TR>
@@ -209,7 +49,7 @@ and open the template in the editor.
 				</TABLE>
 			
 			
-				<BUTTON id="Registrar" type="button" onclick="registrar()" style="display: inline;">
+				<BUTTON id="Registrar" type="button" onclick="registrar()">
 			    </BUTTON>
 			    
 				<BUTTON id="Entrar" type="button" onclick="validarNick()">

@@ -19,6 +19,7 @@
     var id_amigo;
     var img_amigo;
     var par=0;
+    var usuario_conciertos;
    
     
     $(document).ready(function() {
@@ -48,17 +49,21 @@
     function onBodyLoad() {
     	var paresVarValor = leerGET();
 		User_id = paresVarValor['User_id'];
+		User_amigo = paresVarValor['User_amigo'];		
 		Valor = paresVarValor['Valor'];
-		obtenerConciertos();
 		
-		if(Valor=='0')
+		if(Valor=='0'){
+			usuario_conciertos=User_id;
 			obtenerAmigos();
+		}
 			
 		else{
+			usuario_conciertos=User_amigo;
 			div = document.getElementById('amigos');
 			div.style.display = "none";	
-			
 		}
+		
+		obtenerConciertos();	
 		
     }
     
@@ -104,23 +109,24 @@
 		var TROW = document.getElementById("fila_amigos");
         var newCell = TROW.insertCell(TROW.cells.length);
 	    newCell.innerHTML = "<img src="+photo+" id="+id+" class='amigos_img'>"
-	    newCell.onclick=function(){Cargar_Conciertos_amigos(id);}	    	  								
+	    newCell.onclick=function(){Cargar_Conciertos_amigos(id,User_id);}	    	  								
 	}
 
 	function Cargar_Evento(x){
         $("body").fadeOut('slow');     	
-		window.location = "evento.html?Evento="+x;		
+		window.location = "evento.html?Evento="+x+"&User="+User_id;		
 	}
 	
 	function Cargar_Conciertos_amigos(x){
+		alert("SI");
         $("body").fadeOut('slow');     	
-		window.location = "conciertos.html?User_id="+x+"&Valor=1";		
+		window.location = "conciertos.html?User_id="+User_id+"&Valor=1&User_amigo="+x;		
 	}
 
     function obtenerConciertos() {
         
         $.ajax({
-            url: 'http://192.168.1.102/eventos_usuario.php?usuario='+User_id,
+            url: 'http://192.168.1.102/eventos_usuario.php?usuario='+usuario_conciertos,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',

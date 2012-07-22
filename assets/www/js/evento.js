@@ -43,10 +43,15 @@ function onBodyLoad() {
 	var paresVarValor = leerGET();
 	User_id = paresVarValor['User'];
 	Evento = paresVarValor['Evento'];
+	//User_id=123;
 	
 	if(User_id==undefined){
 		var asistencia= document.getElementById("confirmar");
 		asistencia.onclick=function(){registrate();}
+	}
+	
+	else{
+	    document.getElementById('zona').style.display="none";
 	}
 
 	obtenerDatos();
@@ -98,7 +103,6 @@ function obtenerDatos() {
             mostrardatos();
         },
         error: function(){
-            alert('no va');
         }
     });
 }
@@ -106,7 +110,7 @@ function obtenerDatos() {
 function ComprobarAsistencia() {
     
     $.ajax({
-        url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+Evento+'&user='+user,
+        url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+Evento+'&user='+User_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -157,7 +161,6 @@ function ComprobarAsistencia() {
 		$('#EVENTO_precio').html(var_precio + ' €');
 		$('#quantity').val(var_asistentes);
 		
-        $("#cover").fadeOut('fast');
 		$("#base").fadeIn('fast');
     }
     

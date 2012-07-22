@@ -18,12 +18,9 @@ body {
 }
 
 #base {
-    color: #FFFFFF;
-    display: inline-block;
-    font-size: 120%;
+    position: absolute;
     height: 100%;
     left: 0;
-    position: absolute;
     width: 100%;
 }
 
@@ -40,7 +37,7 @@ body {
 }
 
 #Bandas{
-	background-position: -160px -770px;
+	background-position: -410px -770px;
 }
 
 #Diario{
@@ -48,7 +45,7 @@ body {
 }
 
 #Config{
-	background-position: -410px -770px;
+	background-position: -160px -770px;	
 }
 
 a {
@@ -56,8 +53,10 @@ a {
 	background-color: transparent;
     background-image:url("../img/spirtebandnessmovil_60.png");
 	background-repeat: no-repeat;
-	text-align: center;
-	}
+	width:120px; 
+	height:120px;
+	display: block;
+}
 
 
 #Fila{

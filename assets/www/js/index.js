@@ -9,13 +9,13 @@
  //FUNCIONES   
     $(document).ready(function() {
         $("body").css("display", "none");
-  	    $("body").fadeIn('slow');
     
         document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
     });
 
     function onBodyLoad() {   	
 		obtenerDatos();
+		$("body").fadeIn('slow');	
     }
     
 	function mostrarEstilos() {
@@ -88,7 +88,7 @@
     
     function continuar(){
 	    event.preventDefault();
-        linkLocation = "html/bandas.html";
+        linkLocation = "html/bandas.html?tipo=ALL";
         $("body").fadeOut('slow',redirectPage);     
 	}	
 	
