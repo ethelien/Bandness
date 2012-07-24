@@ -9,10 +9,18 @@
  //FUNCIONES   
     $(document).ready(function() {
         $("body").css("display", "none");
-    
+        
+        $("input").click(function() {
+        	$("#zona").css("display", "none");
+    	});
+    	
+    	$("input").blur(function() {
+        	$("#zona").css("display", "inline");
+    	});
+         
         document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);    
-    });
-
+    })
+   
     function onBodyLoad() {   	
 		obtenerDatos();
 		$("body").fadeIn('slow');	

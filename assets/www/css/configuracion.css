@@ -11,12 +11,9 @@ body {
 }
 
 #base {
-    color: #FFFFFF;
-    display: inline-block;
-    font-size: 120%;
+    position: absolute;
     height: 100%;
     left: 0;
-    position: absolute;
     width: 100%;
 }
 
@@ -24,7 +21,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     table-layout: fixed;
-    height: 90%;
+    height: 100%;
     width: 100%;     
 }
 
@@ -42,6 +39,8 @@ a {
     background-image:url("../img/spirtebandnessmovil.png");
 	background-repeat: no-repeat;
 	text-align: center;
+	width:120px; 
+	height:120px;
 	}
 
 

@@ -1,36 +1,13 @@
-/* 
-    Document   : banda_menuprincipal
-    Created on : Feb 24, 2012, 3:17:46 PM
-    Author     : kiko
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
-
-
 html{
 	width: 100%;
 	height:100%; /* gives layout 100% height */
-	overflow:inherit; /* triggers 100% height in Opera 9.5 */
-	background: #4c4c4c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4c4c4c 0%, #666666 10%, #595959 12%, #474747 12%, #2c2c2c 15%, #000000 29%, #111111 73%, #1c1c1c 91%, #2b2b2b 100%, #131313 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(10%,#666666), color-stop(12%,#595959), color-stop(12%,#474747), color-stop(15%,#2c2c2c), color-stop(29%,#000000), color-stop(73%,#111111), color-stop(91%,#1c1c1c), color-stop(100%,#2b2b2b), color-stop(100%,#131313)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* IE10+ */
-	background: linear-gradient(top,  #4c4c4c 0%,#666666 10%,#595959 12%,#474747 12%,#2c2c2c 15%,#000000 29%,#111111 73%,#1c1c1c 91%,#2b2b2b 100%,#131313 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+	overflow:inherit; /* triggers 100% height in Opera 9.5 */	
 }
 
 body {
     margin: 0;
     padding: 0;
-    text-align: left;
+    text-align: center;
 }
 
 #base {
@@ -38,27 +15,23 @@ body {
 	left: 0;
 	top:0;
     background-color: #C0C0C0;
-    display: inline-block;
     height: 100%;
     width: 100%;
 }
 
-.filas{
-    background-color: #C0C0C0;
-    width:100%;
-}
-
-#conciertos {
+#diario {
     width: 100%;  
     border-spacing: 0px 1px;
+}
+
+.filas{
+    background-color: #C0C0C0;
 }
 
 #fechas{
 	position: absolute;
 	bottom:0;
 	background-color: #404448;
-	color: #FFFFFF;
-    display: inline-block;
     height: 60px;
     width: 100%;
 }
@@ -72,7 +45,6 @@ body {
 	border:none;
 	border-radius: 6px;
 	background-image:url("../img/spirtebandnessmovil_60.png");
-	background-repeat: no-repeat;
 	width:50px;
 	height:50px;
    	background-position: -187px -490px;
@@ -82,7 +54,6 @@ body {
 	border:none;
 	border-radius: 6px;
 	background-image:url("../img/spirtebandnessmovil_60.png");
-	background-repeat: no-repeat;
 	width:50px;
 	height:50px;
     background-position: -295px -490px;
@@ -95,17 +66,14 @@ body {
 	}
 
 h1 {
-    text-align: center;
- 	color: white;
-    display: inline-block;
+   color: white;
     font-family: Tahoma;
     font-size: medium;
     font-weight: bolder;
     height: 30px;
-    width: 100%;
     margin-top: 0px;
-    margin-bottom: 0px;
     padding-top: 10px;
+    margin-bottom: -3px;
     background: #4c4c4c; /* Old browsers */
 	background: -moz-linear-gradient(top,  #4c4c4c 0%, #666666 10%, #595959 12%, #474747 12%, #2c2c2c 15%, #000000 29%, #111111 73%, #1c1c1c 91%, #2b2b2b 100%, #131313 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(10%,#666666), color-stop(12%,#595959), color-stop(12%,#474747), color-stop(15%,#2c2c2c), color-stop(29%,#000000), color-stop(73%,#111111), color-stop(91%,#1c1c1c), color-stop(100%,#2b2b2b), color-stop(100%,#131313)); /* Chrome,Safari4+ */
@@ -123,8 +91,6 @@ h2 {
     font-size: medium;
     font-weight: bolder;
     width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 h3 {
