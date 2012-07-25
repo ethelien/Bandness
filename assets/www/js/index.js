@@ -4,8 +4,10 @@
  */
 
 //VARIABLES
-  var linkLocation;
- 
+ var linkLocation;
+ var user_id = localStorage.getItem("user_id");
+ var pass = localStorage.getItem("pass");
+
  //FUNCIONES   
     $(document).ready(function() {
         $("body").css("display", "none");
@@ -77,7 +79,7 @@
     function obtenerDatos() {
         
         $.ajax({
-            url: 'http://192.168.1.102/evento_por_fecha.php',
+            url: 'http://192.168.1.101/evento_por_fecha.php',
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -101,9 +103,18 @@
 	}	
 	
 	function zonaprivada(){
-		event.preventDefault();
-        linkLocation = "html/login.html";
-        $("body").fadeOut('slow',redirectPage);     
+
+		if(user_id!=undefined && pass=='true'){
+			event.preventDefault();
+        	linkLocation = "html/menu.html?User_id="+user_id;
+        	$("body").fadeOut('slow',redirectPage);
+		}
+		
+		else{
+			event.preventDefault();
+        	linkLocation = "html/login.html";
+        	$("body").fadeOut('slow',redirectPage); 
+        }   
 	}
 	
 	function zonaeventos(i){

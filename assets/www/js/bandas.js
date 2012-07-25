@@ -93,7 +93,7 @@ function Cargar_Banda(x){
 function obtenerDatos() {
     
     $.ajax({
-        url: 'http://192.168.1.102/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
+        url: 'http://192.168.1.101/localizacion.php?busqueda='+Banda+"&estilo2="+estilo2+"&estilo3="+estilo3+'&tipo='+tipo,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',

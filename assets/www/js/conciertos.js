@@ -124,7 +124,7 @@ function Cargar_Conciertos_amigos(x){
 
     function obtenerConciertos() {
         $.ajax({
-            url: 'http://192.168.1.102/eventos_usuario.php?usuario='+usuario_conciertos,
+            url: 'http://192.168.1.101/eventos_usuario.php?usuario='+usuario_conciertos,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',

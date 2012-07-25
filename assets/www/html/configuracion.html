@@ -16,7 +16,7 @@
     function obtenerDatos() {
         
         $.ajax({
-            url: 'http://192.168.1.103/banda_informacion.php?banda='+valor,
+            url: 'http://192.168.1.101/banda_informacion.php?banda='+valor,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -59,15 +59,14 @@
         }	
 	}
 	function Sesion(){
-	      
-        if(document.getElementById('Sesion').getAttribute("class") == 'Inactivo'){
-        	document.getElementById('Sesion').setAttribute("class","Activo");
-        }
-        
-        else{
-        	document.getElementById('Sesion').setAttribute("class","Inactivo");
-        }
-	
+		if (confirm("¿Estás seguro de cerrar la sesión?")) {
+			localStorage.removeItem("user_id");
+  		  	localStorage.removeItem("pass");
+  		  	
+  		  	linkLocation = "../index.html";
+        	$("body").fadeOut('slow',redirectPage);  
+        	document.getElementById('Eventos').setAttribute("class","Inactivo");       	   
+		}
 	}
 	
 	function Eventos(){
@@ -81,6 +80,9 @@
         }	
 	}
 
+  	function redirectPage() {
+		window.location = linkLocation;
+	}	
 </script>
 
 </head>
@@ -97,14 +99,14 @@
 	  				<TD id="Fila"align="center" style="width:60%;" onclick="bandas()"><H1 style="display: inline;">Activar notificaciones</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Notificaciones" class="Inactivo" style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR> 
-				<TR onclick="Sesion()">
-	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">No cerrar sesión</H1></TD>
-	  				<TD id="Fila" align="center" style="width:40%;"><a id="Sesion" class="Inactivo"  style="width:100px; height:100px; display: block;"></a> </TD> 
-				</TR> 
-				<TR onclick="Eventos()" style="background-color: #D0D0D0;">
+				<TR onclick="Eventos()">
 	  				<TD id="Fila" align="center" style="width:60%;" onclick="configuracion()"><H1 style="display: inline;">Compartir eventos</H1></TD>
 	  				<TD id="Fila" align="center" style="width:40%;"><a id="Eventos" class="Inactivo"  style="width:100px; height:100px; display: block;"></a> </TD> 
 				</TR>  
+				<TR onclick="Sesion()" style="background-color: #D0D0D0;">
+	  				<TD id="Fila" align="center" style="width:60%;" onclick="diario()"><H1 style="display: inline;">Cerrar sesión</H1></TD>
+	  				<TD id="Fila" align="center" style="width:40%;"><a id="Sesion" class="Inactivo"  style="width:100px; height:100px; display: block;"></a> </TD> 
+				</TR> 
 			</TABLE>
 			
 	 	</div>	

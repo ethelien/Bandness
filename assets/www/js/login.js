@@ -9,7 +9,7 @@ var pass;
 $(document).ready(function() {
 	$("body").css("display", "none");
 	$("body").fadeIn('slow');
-
+	
 });
 
 function leerGET(){
@@ -71,7 +71,7 @@ function validarNick() {
 	valor=document.getElementById("N").value;
     
     $.ajax({
-        url: 'http://192.168.1.102/bandee_nick.php?busqueda='+valor,
+        url: 'http://192.168.1.101/bandee_nick.php?busqueda='+valor,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -93,7 +93,7 @@ function validarPass() {
 	valor=document.getElementById("P").value;
 	
 	$.ajax({
-        url: 'http://192.168.1.102/bandee_pass.php?pass='+valor+'&id='+user_id,
+        url: 'http://192.168.1.101/bandee_pass.php?pass='+valor+'&id='+user_id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -112,7 +112,7 @@ function validarPass() {
 	function Obtener_id() {
 				
     $.ajax({
-        url: 'http://192.168.1.102/bandee_user_id.php?user='+user_id,
+        url: 'http://192.168.1.101/bandee_user_id.php?user='+user_id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -121,6 +121,8 @@ function validarPass() {
 	            $.each(data, function(i,item){
 	                id = item.id;
 	            });
+	            localStorage.setItem("user_id",id);
+	            localStorage.setItem("pass",pass);
     			entrar();  	
 	        },
 	        error: function(){

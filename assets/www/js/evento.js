@@ -78,7 +78,7 @@ function cambiar(){
 function obtenerDatos() {
     
     $.ajax({
-        url: 'http://192.168.1.102/evento_info.php?evento='+Evento,
+        url: 'http://192.168.1.101/evento_info.php?evento='+Evento,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -110,7 +110,7 @@ function obtenerDatos() {
 function ComprobarAsistencia() {
     
     $.ajax({
-        url: 'http://192.168.1.102/bandee_asistencia_evento.php?evento='+Evento+'&user='+User_id,
+        url: 'http://192.168.1.101/bandee_asistencia_evento.php?evento='+Evento+'&user='+User_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -136,7 +136,7 @@ function ComprobarAsistencia() {
    function ConfirmarAsistencia(i) {		
         
         $.ajax({
-            url: 'http://192.168.1.102/evento_confirmar_asistencia.php?user_id='+User_id+'&event_id='+Evento+'&valor='+i,
+            url: 'http://192.168.1.101/evento_confirmar_asistencia.php?user_id='+User_id+'&event_id='+Evento+'&valor='+i,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
