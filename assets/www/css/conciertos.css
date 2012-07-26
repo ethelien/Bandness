@@ -49,6 +49,10 @@ body {
 	position: absolute;
 	bottom:0;
     height: 110px;
+    width:100%;
+}
+
+.fila_amigos {
     overflow-x: auto;
 }
 

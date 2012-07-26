@@ -1,4 +1,7 @@
- //FUNCIONES
+ var user_id = localStorage.getItem("user_id"); 
+
+
+//FUNCIONES
     
     $(document).ready(function() {
         $("body").css("display", "none");
@@ -24,8 +27,8 @@
 	
     function onBodyLoad() {
     	
-		var paresVarValor = leerGET();
-		User_id = paresVarValor['User_id'];
+		//var paresVarValor = leerGET();
+		//User_id = paresVarValor['User_id'];
     }
     
     function bandas(){
@@ -39,12 +42,12 @@
 	}
 	
 	function conciertos(){
-		linkLocation = "conciertos.html?User_id="+User_id+"&Valor=0";
+		linkLocation = "conciertos.html?Valor=0";
         $("body").fadeOut('slow',redirectPage);     	
 	}
 	
 	function diario(){
-		linkLocation = "diario.html?User_id="+User_id;
+		linkLocation = "diario.html";
         $("body").fadeOut('slow',redirectPage);     	
 	}
 	

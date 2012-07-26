@@ -50,7 +50,7 @@ function leerGET(){
 function obtenerInfo() {
 			    
     $.ajax({
-    	url: 'http://192.168.1.101/banda_informacion.php?banda='+id,
+    	url: 'http://158.42.77.115/banda_informacion.php?banda='+id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -82,7 +82,7 @@ function obtenerInfo() {
 function obtenerEventos() {
     
 $.ajax({
-	url: 'http://192.168.1.101/banda_evento.php?banda='+id,
+	url: 'http://158.42.77.115/banda_evento.php?banda='+id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',

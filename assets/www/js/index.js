@@ -79,7 +79,7 @@
     function obtenerDatos() {
         
         $.ajax({
-            url: 'http://192.168.1.101/evento_por_fecha.php',
+            url: 'http://158.42.77.115/evento_por_fecha.php',
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',

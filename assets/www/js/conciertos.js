@@ -1,6 +1,5 @@
 //VARIABLES
 
-var User_id;
 var Valor;
 var name;
 var id;
@@ -14,6 +13,8 @@ var id_amigo;
 var img_amigo;
 var par=0;
 var usuario_conciertos;
+var user_id = localStorage.getItem("user_id");
+
    
 //FUNCIONES
     
@@ -43,13 +44,13 @@ function leerGET(){
 
 function onBodyLoad() {
 	var paresVarValor = leerGET();
-	User_id = paresVarValor['User_id'];
+	//User_id = paresVarValor['User_id'];
 	User_amigo = paresVarValor['User_amigo'];		
 	Valor = paresVarValor['Valor'];
 	Mes = paresVarValor['Mes'];
 	
 	if(Valor=='0'){
-		usuario_conciertos=User_id;
+		usuario_conciertos=user_id;
 		obtenerAmigos();
 	}
 		
@@ -60,7 +61,7 @@ function onBodyLoad() {
 	}
 	
 	else if(Valor=='2'){
-		usuario_conciertos=User_id;
+		usuario_conciertos=user_id;
 		div = document.getElementById('amigos');
 		div.style.display = "none";		
 	}
@@ -109,22 +110,22 @@ function añadiramigos(id, photo){
 	var TROW = document.getElementById("fila_amigos");
     var newCell = TROW.insertCell(TROW.cells.length);
     newCell.innerHTML = "<img src="+photo+" id="+id+" class='amigos_img'>"
-    newCell.onclick=function(){Cargar_Conciertos_amigos(id,User_id);}	    	  								
+    newCell.onclick=function(){Cargar_Conciertos_amigos(id,user_id);}	    	  								
 }
 
 function Cargar_Evento(x){
     $("body").fadeOut('slow');     	
-	window.location = "evento.html?Evento="+x+"&User="+User_id;		
+	window.location = "evento.html?Evento="+x;		
 }
 
 function Cargar_Conciertos_amigos(x){
     $("body").fadeOut('slow');     	
-	window.location = "conciertos.html?User_id="+User_id+"&Valor=1&User_amigo="+x;		
+	window.location = "conciertos.html?Valor=1&User_amigo="+x;		
 }
 
     function obtenerConciertos() {
         $.ajax({
-            url: 'http://192.168.1.101/eventos_usuario.php?usuario='+usuario_conciertos,
+            url: 'http://158.42.77.115/eventos_usuario.php?usuario='+usuario_conciertos,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -158,7 +159,7 @@ function Cargar_Conciertos_amigos(x){
 function obtenerAmigos() {
 
 	$.ajax({
-	    url: 'http://192.168.1.102/usuario_amigos.php?usuario='+User_id,
+	    url: 'http://158.42.77.115/usuario_amigos.php?usuario='+user_id,
 	    dataType: 'jsonp',
 	    jsonp: 'jsoncallback',
 	    type:'get',

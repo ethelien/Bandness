@@ -6,6 +6,7 @@ var anyo=fecha.getFullYear();
 var event_id;
 var event_mes;
 var event_year;
+var user_id = localStorage.getItem("user_id");
 
 function leerGET(){
 	    var cadGET = location.search.substr(1,location.search.length);
@@ -24,8 +25,8 @@ function leerGET(){
 
 
 function onBodyLoad() {
-	var paresVarValor = leerGET();
-	User_id = paresVarValor['User_id'];
+	//var paresVarValor = leerGET();
+	//User_id = paresVarValor['User_id'];
 	$('#quantity').val(anyo);
 	obtenerDiario();
 }
@@ -87,13 +88,13 @@ function addNewRow(){
 
 function Cargar_Conciertos(x){
     $("body").fadeOut('slow');     	
-	window.location = "conciertos.html?User_id="+User_id+"&Mes="+x+"&Valor=2";		
+	window.location = "conciertos.html?User_id="+user_id+"&Mes="+x+"&Valor=2";		
 }
 
 
 function obtenerDiario() {
     $.ajax({
-        url: 'http://192.168.1.102/usuario_diario.php?usuario='+User_id,
+        url: 'http://158.42.77.115/usuario_diario.php?usuario='+user_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',

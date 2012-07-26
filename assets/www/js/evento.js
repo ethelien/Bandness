@@ -12,6 +12,8 @@ var var_longitude;
 var var_latitude;
 var var_asistentes;
 var var_conf="";
+var user_id = localStorage.getItem("user_id");
+
 
 //FUNCIONES
 
@@ -41,11 +43,11 @@ function leerGET(){
 function onBodyLoad() {
 	
 	var paresVarValor = leerGET();
-	User_id = paresVarValor['User'];
+	//User_id = paresVarValor['User'];
 	Evento = paresVarValor['Evento'];
 	//User_id=123;
 	
-	if(User_id==undefined){
+	if(user_id==undefined){
 		var asistencia= document.getElementById("confirmar");
 		asistencia.onclick=function(){registrate();}
 	}
@@ -70,7 +72,7 @@ function cambiar(){
     else{
     	document.getElementById('confirmar').setAttribute("class","por_confirmar");    	
         $('#quantity').val(parseInt($('#quantity').val()) - 1);
-        ConfirmarAsistencia(User_id);        	  
+        ConfirmarAsistencia(user_id);        	  
     }
     
 }
@@ -78,7 +80,7 @@ function cambiar(){
 function obtenerDatos() {
     
     $.ajax({
-        url: 'http://192.168.1.101/evento_info.php?evento='+Evento,
+        url: 'http://158.42.77.115/evento_info.php?evento='+Evento,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -110,7 +112,7 @@ function obtenerDatos() {
 function ComprobarAsistencia() {
     
     $.ajax({
-        url: 'http://192.168.1.101/bandee_asistencia_evento.php?evento='+Evento+'&user='+User_id,
+        url: 'http://158.42.77.115/bandee_asistencia_evento.php?evento='+Evento+'&user='+user_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -136,7 +138,7 @@ function ComprobarAsistencia() {
    function ConfirmarAsistencia(i) {		
         
         $.ajax({
-            url: 'http://192.168.1.101/evento_confirmar_asistencia.php?user_id='+User_id+'&event_id='+Evento+'&valor='+i,
+            url: 'http://158.42.77.115/evento_confirmar_asistencia.php?user_id='+user_id+'&event_id='+Evento+'&valor='+i,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
