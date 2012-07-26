@@ -63,6 +63,11 @@ body {
 	display: inline;
 }
 
+.lista_amigos{
+	width:100%;
+	overflow:auto;
+}
+
 h1 {
     color: white;
     font-family: Tahoma;

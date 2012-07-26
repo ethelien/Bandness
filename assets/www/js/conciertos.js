@@ -45,6 +45,7 @@ function leerGET(){
 function onBodyLoad() {
 	var paresVarValor = leerGET();
 	//User_id = paresVarValor['User_id'];
+	user_id=123;
 	User_amigo = paresVarValor['User_amigo'];		
 	Valor = paresVarValor['Valor'];
 	Mes = paresVarValor['Mes'];
