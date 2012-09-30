@@ -7,11 +7,20 @@
 <script src="../js/jquery-1.7.2.min.js"></script>
 <script src="../js/jquery.jsonp-2.2.1.js"></script>
 <script>
+
+var notificacion = localStorage.getItem("Notificaciones");
+
+
     $(document).ready(function() {
         $("body").css("display", "none");
   	    $("body").fadeIn('slow');
     
    });
+    
+    function onBodyLoad() {
+    	
+		Predefinidas();
+    }
 
     function obtenerDatos() {
         
@@ -34,6 +43,16 @@
             }
         });
     }
+    
+    function Predefinidas(){
+    	
+    	if(notificacion == "OK")
+        	document.getElementById('Notificaciones').setAttribute("class","Activo");
+
+    	else
+        	document.getElementById('Notificaciones').setAttribute("class","Inactivo");
+
+    }
 
 
 	function Geolocalizacion(){
@@ -52,10 +71,15 @@
 		
       if(document.getElementById('Notificaciones').getAttribute("class") == 'Inactivo'){
         	document.getElementById('Notificaciones').setAttribute("class","Activo");
+            localStorage.setItem("Notificaciones","OK");
+            alert("Activo");
         }
         
         else{
         	document.getElementById('Notificaciones').setAttribute("class","Inactivo");
+            localStorage.removeItem("Notificaciones");
+            alert("Inactivo");
+          
         }	
 	}
 	function Sesion(){
@@ -86,7 +110,7 @@
 </script>
 
 </head>
-<body>
+<body  onload="onBodyLoad()">
 
 		<div id="base">
 		 

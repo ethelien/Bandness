@@ -32,7 +32,8 @@
     }
     
     function bandas(){
-        linkLocation = "bandas.html";
+	    event.preventDefault();
+        linkLocation = "bandas.html?tipo=ALL";
         $("body").fadeOut('slow',redirectPage);     	
 	}
 	

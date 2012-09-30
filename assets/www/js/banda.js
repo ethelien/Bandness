@@ -12,6 +12,7 @@ var cabecera="";
 var dia;
 var mes;
 var id_evento;
+var slug;
 
 //FUNCIONES
 
@@ -50,7 +51,7 @@ function leerGET(){
 function obtenerInfo() {
 			    
     $.ajax({
-    	url: 'http://158.42.77.115/banda_informacion.php?banda='+id,
+    	url: 'http://192.168.1.100/banda_informacion.php?banda='+id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -82,7 +83,7 @@ function obtenerInfo() {
 function obtenerEventos() {
     
 $.ajax({
-	url: 'http://158.42.77.115/banda_evento.php?banda='+id,
+	url: 'http://192.168.1.100/banda_evento.php?banda='+id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -106,7 +107,7 @@ function añadireventos(dia, mes,id_evento){
 	var TROW = document.getElementById("prox_eventos");
     var newCell = TROW.insertCell(TROW.cells.length);
     newCell.innerHTML = "<button id="+id_evento+" class='fecha_evento'>"
-    newCell.onclick=function(){Cargar_Evento(id_evento);}
+    newCell.onclick=function(){Cargar_Evento(id_evento,slug);}
     	  		    
 	var id_mes = mes+"_"+id_evento;
 	var id_dia = dia+"_"+id_evento;
@@ -131,9 +132,9 @@ function zonaprivada(){
 	window.location = "login.html";		
 }
 
-function Cargar_Evento(x){
+function Cargar_Evento(x,y){
 	$("body").fadeOut('slow');     	
-	window.location = "evento.html?Evento="+x;		
+	window.location = "evento.html?Evento="+x;
 }
 
 function mostrardatos() {

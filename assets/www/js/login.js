@@ -71,7 +71,7 @@ function validarNick() {
 	valor=document.getElementById("N").value;
     
     $.ajax({
-        url: 'http://158.42.77.115/bandee_nick.php?busqueda='+valor,
+        url: 'http://192.168.1.100/bandee_nick.php?busqueda='+valor,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -93,7 +93,7 @@ function validarPass() {
 	valor=document.getElementById("P").value;
 	
 	$.ajax({
-        url: 'http://158.42.77.115/bandee_pass.php?pass='+valor+'&id='+user_id,
+        url: 'http://192.168.1.100/bandee_pass.php?pass='+valor+'&id='+user_id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',
@@ -112,7 +112,7 @@ function validarPass() {
 	function Obtener_id() {
 				
     $.ajax({
-        url: 'http://158.42.77.115/bandee_user_id.php?user='+user_id,
+        url: 'http://192.168.1.100/bandee_user_id.php?user='+user_id,
 	        dataType: 'jsonp',
 	        jsonp: 'jsoncallback',
 	        type:'get',

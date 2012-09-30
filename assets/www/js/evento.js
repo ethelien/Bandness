@@ -13,6 +13,9 @@ var var_latitude;
 var var_asistentes;
 var var_conf="";
 var user_id = localStorage.getItem("user_id");
+var var_slug;
+var notificacion = localStorage.getItem("Notificaciones");
+
 
 
 //FUNCIONES
@@ -60,13 +63,29 @@ function onBodyLoad() {
 	ComprobarAsistencia();
 	
 } 
+
+function compartirFB(){
+	//46 lo pongo por ahora por defecto para probar sobre bandness.com y no sobre test.com - 46 es el ID del evento
+		var fb = "bandness.com/home#/"+var_slug+"/live/46";
+		fb = "http://www.facebook.com/share.php?u="+encodeURIComponent(fb)+"share&t=PRUEBA";
+		window.location = fb;
+}
+
+function compartirTW(){
+	//46 lo pongo por ahora por defecto para probar sobre bandness.com y no sobre test.com - 46 es el ID del evento
+	
+		var tw_adress = "bandness.com/home#/"+var_slug+"/live/46";
+		var tw_tittle = var_nombre;
+		fb = "http://twitter.com/home?status="+encodeURIComponent(tw_tittle)+" - "+encodeURIComponent(tw_adress)+" - via @bandnessmusica";
+		window.location = fb;
+}
   
 function cambiar(){
  
     if(document.getElementById('confirmar').getAttribute("class") == 'por_confirmar'){
     	document.getElementById('confirmar').setAttribute("class","confirmado");
         $('#quantity').val(parseInt($('#quantity').val()) + 1); 	
-        ConfirmarAsistencia(0); 
+        ConfirmarAsistencia(0);
     }
     
     else{
@@ -80,7 +99,7 @@ function cambiar(){
 function obtenerDatos() {
     
     $.ajax({
-        url: 'http://158.42.77.115/evento_info.php?evento='+Evento,
+        url: 'http://192.168.1.100/evento_info.php?evento='+Evento,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -99,7 +118,10 @@ function obtenerDatos() {
                var_location = item.location;
                var_latitude = item.latitude;
                var_longitude = item.longitude
-               var_asistentes = item.cuenta;               
+               var_asistentes = item.cuenta;  
+               
+               var_slug = item.slug;
+               alert(var_slug);
 
             });
             mostrardatos();
@@ -112,7 +134,7 @@ function obtenerDatos() {
 function ComprobarAsistencia() {
     
     $.ajax({
-        url: 'http://158.42.77.115/bandee_asistencia_evento.php?evento='+Evento+'&user='+user_id,
+        url: 'http://192.168.1.100/bandee_asistencia_evento.php?evento='+Evento+'&user='+user_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',
@@ -138,13 +160,13 @@ function ComprobarAsistencia() {
    function ConfirmarAsistencia(i) {		
         
         $.ajax({
-            url: 'http://158.42.77.115/evento_confirmar_asistencia.php?user_id='+user_id+'&event_id='+Evento+'&valor='+i,
+            url: 'http://192.168.1.100/evento_confirmar_asistencia.php?user_id='+user_id+'&event_id='+Evento+'&valor='+i,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
             timeout: 5000,
-            success: function(data){
-
+            success: function(data){      
+   
             }, 
             error: function(){
 

@@ -45,7 +45,7 @@ function leerGET(){
 function onBodyLoad() {
 	var paresVarValor = leerGET();
 	//User_id = paresVarValor['User_id'];
-	user_id=123;
+	user_id=123; // POR AHORA SIEMPRE LO METO EN EL MIO PARA NO HABER PROBLEMAS
 	User_amigo = paresVarValor['User_amigo'];		
 	Valor = paresVarValor['Valor'];
 	Mes = paresVarValor['Mes'];
@@ -126,7 +126,7 @@ function Cargar_Conciertos_amigos(x){
 
     function obtenerConciertos() {
         $.ajax({
-            url: 'http://158.42.77.115/eventos_usuario.php?usuario='+usuario_conciertos,
+            url: 'http://192.168.1.100/eventos_usuario.php?usuario='+usuario_conciertos,
             dataType: 'jsonp',
             jsonp: 'jsoncallback',
             type:'get',
@@ -160,7 +160,7 @@ function Cargar_Conciertos_amigos(x){
 function obtenerAmigos() {
 
 	$.ajax({
-	    url: 'http://158.42.77.115/usuario_amigos.php?usuario='+user_id,
+	    url: 'http://192.168.1.100/usuario_amigos.php?usuario='+user_id,
 	    dataType: 'jsonp',
 	    jsonp: 'jsoncallback',
 	    type:'get',

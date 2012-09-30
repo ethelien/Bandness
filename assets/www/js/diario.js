@@ -94,7 +94,7 @@ function Cargar_Conciertos(x){
 
 function obtenerDiario() {
     $.ajax({
-        url: 'http://158.42.77.115/usuario_diario.php?usuario='+user_id,
+        url: 'http://192.168.1.100/usuario_diario.php?usuario='+user_id,
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
         type:'get',

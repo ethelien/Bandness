@@ -70,7 +70,7 @@ body {
 
 #botones {
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     width: 100%;
 }
 
@@ -109,6 +109,13 @@ body {
 .confirmado{
 	background: -814px -207px;
 }
+
+#twitter{
+ 	padding-right:20px;
+ }
+#facebook{
+ 	padding-right:5px;
+ }
 
 
 #zona {
